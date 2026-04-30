@@ -21,9 +21,17 @@ cd ~/dreamerv3
 # 2) 准备日志目录
 mkdir -p logs
 mkdir -p ~/logdir/dreamer
+mkdir -p ~/tmp/$SLURM_JOB_ID
+mkdir -p ~/tmp/jax_cache
 
 # 3) 加载 CUDA（可选：cuda/cuda-11.8）
 module load cuda/cuda-12.6
+
+# 让 JAX/XLA 不使用系统 /tmp（该目录常被其他作业占满）
+export TMPDIR="$HOME/tmp/$SLURM_JOB_ID"
+export TEMP="$TMPDIR"
+export TMP="$TMPDIR"
+export XLA_FLAGS="--xla_gpu_kernel_cache_file=$HOME/tmp/jax_cache/kernel_cache.pb"
 
 # 4) 使用本地 venv 的绝对路径 Python，避免 PATH 问题
 VENV_PY="$HOME/dreamerv3/.venv/bin/python3"
@@ -39,6 +47,7 @@ echo "HOSTNAME: $(hostname)"
 echo "DATE: $(date)"
 echo "PWD: $(pwd)"
 echo "PYTHON: $VENV_PY"
+"$VENV_PY" -c "import os; print('TMPDIR:', os.environ.get('TMPDIR'))"
 "$VENV_PY" --version
 nvidia-smi || true
 echo "===================="
