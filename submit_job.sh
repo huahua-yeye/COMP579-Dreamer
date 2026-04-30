@@ -25,7 +25,10 @@ mkdir -p ~/tmp/$SLURM_JOB_ID
 mkdir -p ~/tmp/jax_cache
 
 # 3) 加载 CUDA（可选：cuda/cuda-11.8）
-module load cuda/cuda-12.6
+module switch cuda/cuda-12.6 cuda/cuda-11.8 || {
+  module unload cuda || true
+  module load cuda/cuda-11.8
+}
 
 # 让 JAX/XLA 不使用系统 /tmp（该目录常被其他作业占满）
 export TMPDIR="$HOME/tmp/$SLURM_JOB_ID"
