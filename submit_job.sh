@@ -1,12 +1,17 @@
 #!/bin/bash
 #SBATCH --job-name=dreamerv3
+#SBATCH --account=winter2026-comp579
 #SBATCH --output=logs/out_%j.txt
 #SBATCH --error=logs/err_%j.txt
 #SBATCH --time=12:00:00
-#SBATCH --partition=comp579-1gpu-12h
 #SBATCH --gres=gpu:1
 #SBATCH --mem=16G
 #SBATCH --cpus-per-task=4
+
+# --partition=gpu-grad-02
+# darcos2
+# cyu2
+# sacctmgr list association where user=cyu2 format=Account,User,Description,Partition,Cluster
 
 set -euo pipefail
 
