@@ -66,11 +66,22 @@ print("JAX backend:", jax.default_backend())
 PY
 
 # 7) 开始训练
+# "$VENV_PY" dreamerv3/main.py \
+#   --logdir ~/logdir/dreamer/run1 \
+#   --configs crafter \
+#   #--jax.platform cpu
+#   --run.steps 10000 \
+#   --run.train_ratio 64 \
+#   --run.log_every 60 \
+#   --run.report_every 120
+
+
 "$VENV_PY" dreamerv3/main.py \
-  --logdir ~/logdir/dreamer/run1 \
-  --configs crafter \
-  #--jax.platform cpu
-  --run.steps 5000 \
-  --run.train_ratio 32 \
+  --logdir ~/logdir/dreamer/atari100k_pong_6h \
+  --configs atari100k,size1m \
+  --task atari100k_pong \
+  --run.steps 100000 \
+  --run.train_ratio 128 \
   --run.log_every 60 \
-  --run.report_every 120
+  --run.report_every 120 \
+  --run.save_every 600
