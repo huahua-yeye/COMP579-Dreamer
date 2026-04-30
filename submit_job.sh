@@ -65,7 +65,7 @@ PY
 # 7) 开始训练
 "$VENV_PY" dreamerv3/main.py \
   --logdir ~/logdir/dreamer/run1 \
-  --configs atari100k,size1m \
+  --configs crafter \
   --run.steps 5000 \
   --run.train_ratio 32 \
   --run.log_every 60 \
