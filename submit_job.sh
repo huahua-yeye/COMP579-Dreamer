@@ -33,7 +33,6 @@ module load cuda/cuda-11.8
 export TMPDIR="$HOME/tmp/$SLURM_JOB_ID"
 export TEMP="$TMPDIR"
 export TMP="$TMPDIR"
-export XLA_FLAGS="--xla_gpu_kernel_cache_file=$HOME/tmp/jax_cache/kernel_cache.pb"
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.5
 
