@@ -25,16 +25,17 @@ mkdir -p ~/tmp/$SLURM_JOB_ID
 mkdir -p ~/tmp/jax_cache
 
 # 3) 加载 CUDA（可选：cuda/cuda-11.8）
-module switch cuda/cuda-12.6 cuda/cuda-11.8 || {
-  module unload cuda || true
-  module load cuda/cuda-11.8
-}
+module unload cuda || true
+module load cuda/cuda-11.8
+
 
 # 让 JAX/XLA 不使用系统 /tmp（该目录常被其他作业占满）
 export TMPDIR="$HOME/tmp/$SLURM_JOB_ID"
 export TEMP="$TMPDIR"
 export TMP="$TMPDIR"
 export XLA_FLAGS="--xla_gpu_kernel_cache_file=$HOME/tmp/jax_cache/kernel_cache.pb"
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+export XLA_PYTHON_CLIENT_MEM_FRACTION=0.5
 
 # 4) 使用本地 venv 的绝对路径 Python，避免 PATH 问题
 VENV_PY="$HOME/dreamerv3/.venv/bin/python3"
