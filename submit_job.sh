@@ -69,7 +69,7 @@ PY
 "$VENV_PY" dreamerv3/main.py \
   --logdir ~/logdir/dreamer/run1 \
   --configs crafter \
-  --jax.platform cpu
+  #--jax.platform cpu
   --run.steps 5000 \
   --run.train_ratio 32 \
   --run.log_every 60 \
