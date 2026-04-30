@@ -66,7 +66,8 @@ PY
 "$VENV_PY" dreamerv3/main.py \
   --logdir ~/logdir/dreamer/run1 \
   --configs atari100k,size1m \
-  --run.steps 100000 \
-  --run.train_ratio 64 \
+  --envs 1 \
+  --run.steps 5000 \
+  --run.train_ratio 32 \
   --run.log_every 60 \
   --run.report_every 120
