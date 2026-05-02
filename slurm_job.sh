@@ -4,9 +4,9 @@
 #SBATCH --output=logs/out_%j.txt
 #SBATCH --error=logs/err_%j.txt
 #SBATCH --time=12:00:00
-#SBATCH --gres=gpu:1
-#SBATCH --mem=16G
-#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:4
+#SBATCH --mem=256G
+#SBATCH --cpus-per-task=32
 
 # --partition=gpu-grad-02
 # darcos2
@@ -27,7 +27,6 @@ mkdir -p ~/tmp/jax_cache
 # 3) 加载 CUDA（可选：cuda/cuda-11.8）
 module unload cuda || true
 module load cuda/cuda-11.8
-
 
 # 让 JAX/XLA 不使用系统 /tmp（该目录常被其他作业占满）
 export TMPDIR="$HOME/tmp/$SLURM_JOB_ID"
@@ -80,8 +79,8 @@ PY
   --logdir ~/logdir/dreamer/atari100k_pong_6h \
   --configs atari100k,size1m \
   --task atari100k_pong \
-  --run.steps 100000 \
-  --run.train_ratio 128 \
+  --run.steps 1.1e5 \
+  --run.train_ratio 256\
   --run.log_every 60 \
   --run.report_every 120 \
   --run.save_every 600
