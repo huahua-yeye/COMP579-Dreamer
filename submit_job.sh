@@ -75,13 +75,41 @@ PY
 #   --run.log_every 60 \
 #   --run.report_every 120
 
+# Naive GRU
+# "$VENV_PY" dreamerv3/main.py \
+#   --logdir ~/logdir/dreamer/atari100k_pong_6h \
+#   --configs atari100k,size1m \
+#   --task atari100k_pong \
+#   --run.steps 1.1e5 \
+#   --run.train_ratio 256\
+#   --run.log_every 60 \
+#   --run.report_every 120 \
+#   --run.save_every 600
 
+# Transformer
 "$VENV_PY" dreamerv3/main.py \
-  --logdir ~/logdir/dreamer/atari100k_pong_6h \
+  --logdir ~/logdir/dreamer/atari100k_pong_6h_tx \
   --configs atari100k,size1m \
   --task atari100k_pong \
-  --run.steps 100000 \
-  --run.train_ratio 128 \
+  --run.steps 1.1e5 \
+  --run.train_ratio 256 \
   --run.log_every 60 \
   --run.report_every 120 \
-  --run.save_every 600
+  --run.save_every 600 \
+  --agent.dyn.rssm.core transformer \
+  --agent.dyn.rssm.attn_heads 4 \
+  --agent.dyn.rssm.attn_layers 1 
+
+# TRM
+# "$VENV_PY" dreamerv3/main.py \
+#   --logdir ~/logdir/dreamer/atari100k_pong_6h_trm \
+#   --configs atari100k,size1m \
+#   --task atari100k_pong \
+#   --run.steps 1.1e5 \
+#   --run.train_ratio 256 \
+#   --run.log_every 60 \
+#   --run.report_every 120 \
+#   --run.save_every 600 \
+#   --agent.dyn.rssm.core trm \
+#   --agent.dyn.rssm.attn_heads 4 \
+#   --agent.dyn.rssm.trm_steps 8
