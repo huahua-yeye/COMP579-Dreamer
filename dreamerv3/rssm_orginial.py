@@ -39,29 +39,8 @@ class RSSM(nj.Module):
   blocks: int = 8 #number of blocks
   free_nats: float = 1.0 #free nats for kl divergence
 
-  # ---------------------------------------------------------------------------
-  # Optional Transformer / TRM dynamics core.
-  #
-  # Default ``core='gru'`` preserves the original Dreamer block-GRU behavior
-  # bit for bit, so existing runs / configs / checkpoints continue to work.
-  # ``'transformer'``: stacked self-attention blocks (independent per-layer
-  # weights) over the 3 role tokens (deter, stoch, action) -> deter.
-  # ``'trm'``: Tiny Recursive Model -- single attention+FFN block applied
-  # ``trm_steps`` times with *shared* weights, i.e. recursive depth without
-  # extra parameters.
-  # ---------------------------------------------------------------------------
-  core: str = 'gru'           # 'gru' | 'transformer' | 'trm'
-  attn_heads: int = 4         # number of self-attention heads
-  attn_layers: int = 1        # number of (independent) Transformer layers
-  trm_steps: int = 8          # number of recursive iterations for TRM
-  attn_qknorm: str = 'rms'    # qk-norm impl ('none' | 'rms' | 'layer')
-  attn_ffup: int = 2          # FFN expansion ratio inside attention blocks
-
   def __init__(self, act_space, **kw):
     assert self.deter % self.blocks == 0
-    assert self.core in ('gru', 'transformer', 'trm'), self.core
-    if self.core in ('transformer', 'trm'):
-      assert self.hidden % self.attn_heads == 0, (self.hidden, self.attn_heads)
     self.act_space = act_space
     self.kw = kw
 
@@ -181,196 +160,32 @@ class RSSM(nj.Module):
     return carry, entries, losses, feat, metrics
 
   def _core(self, deter, stoch, action):
-    """One-step deterministic dynamics: (h_{t-1}, z_{t-1}, a_t) -> h_t.
-
-    Args
-    ----
-    deter:
-      Previous deterministic state h, shape [..., D] with D == self.deter.
-    stoch:
-      Previous discrete stochastic state z as one-hot or soft probabilities,
-      often [..., S, C]; flattened here to [..., S * C].
-    action:
-      Current action (already concatenated from a dict outside); batch axes
-      align with deter.
-
-    Returns
-    -------
-    New deter with the same shape as the input deter.
-
-    Design (blocked layout + GRU-like update)
-    -----------------------------------------
-    1. Split the length-D last axis into g == self.blocks groups of size D/g.
-       ``nn.BlockLinear(..., g)`` in ``nets.py`` applies a *block-wise* linear
-       map: no mixing across blocks, full mixing inside each block; roughly
-       1/g the parameters of a dense D x D matrix, with a structured inductive
-       bias.
-    2. Three embedding branches: Linear h, flattened z, and a each to
-       self.hidden, then Norm + activation -> x0, x1, x2.
-    3. Concatenate the three, repeat g times along the block axis, concat with
-       block-split h on the feature axis, then group2flat -> GRU input x.
-    4. Stack dynlayers of BlockLinear + Norm + Act for extra depth while
-       keeping the block-sparse pattern.
-    5. Final BlockLinear outputs 3*D, split into reset / cand / update gates
-       in GRU form: h_new = u * tanh(r * c) + (1 - u) * h_old, with update
-       passed through sigmoid(... - 1) as in this codebase's convention.
-
-    Alternative dynamics cores (selected via ``self.core``)
-    ------------------------------------------------------
-    - ``'gru'`` (default): original block-GRU implementation below.
-    - ``'transformer'``: stacked self-attention over the 3 role tokens.
-    - ``'trm'``: Tiny Recursive Model, shared-weight attention iterated
-      ``trm_steps`` times.
-    See ``_core_attn`` / ``_trm_block`` for the alternative implementations.
-    """
-    # Dispatch to alternative dynamics cores while leaving the GRU path
-    # below completely untouched (so the default behavior is bit-identical
-    # to the original implementation).
-    if self.core == 'transformer':
-      return self._core_attn(deter, stoch, action, recurrent=False)
-    if self.core == 'trm':
-      return self._core_attn(deter, stoch, action, recurrent=True)
-
-    # ----------------------- 'gru' (original) --------------------------------
-    # Flatten stochastic state for the same Linear API as deter / action.
+    # Block GRU core: split deter into g blocks for fewer params and structure.
     stoch = stoch.reshape((stoch.shape[0], -1))
-
-    # Per-dimension action scaling: divide by max(1, |a|) -> roughly [-1, 1]^d.
-    # sg(...) stops gradients through the scale so early huge actions do not
-    # dominate dynamics gradients; gradients still flow through action values.
+    # Scale actions down so large magnitudes do not destabilize dynamics.
     action /= sg(jnp.maximum(1, jnp.abs(action)))
-
     g = self.blocks
-    # Last axis D -> (g, D/g) for block-wise concat with deter and gate split.
     flat2group = lambda x: einops.rearrange(x, '... (g h) -> ... g h', g=g)
     group2flat = lambda x: einops.rearrange(x, '... g h -> ... (g h)', g=g)
-
-    # Three symmetric conditioning branches to hidden width.
-    # x0: previous deter h_{t-1}; x1: stochastic z_{t-1}; x2: action a_t.
     x0 = self.sub('dynin0', nn.Linear, self.hidden, **self.kw)(deter)
     x0 = nn.act(self.act)(self.sub('dynin0norm', nn.Norm, self.norm)(x0))
     x1 = self.sub('dynin1', nn.Linear, self.hidden, **self.kw)(stoch)
     x1 = nn.act(self.act)(self.sub('dynin1norm', nn.Norm, self.norm)(x1))
     x2 = self.sub('dynin2', nn.Linear, self.hidden, **self.kw)(action)
     x2 = nn.act(self.act)(self.sub('dynin2norm', nn.Norm, self.norm)(x2))
-    # Concat [x0|x1|x2]; [..., None, :].repeat(g, -2) broadcasts g copies on
-    # the block axis so each block sees the same conditioning when aligned with
-    # flat2group(deter) (matches Dreamer-family RSSM usage).
     x = jnp.concatenate([x0, x1, x2], -1)[..., None, :].repeat(g, -2)
-    # Block-split current h, concat with x on features, flatten -> GRU input.
     x = group2flat(jnp.concatenate([flat2group(deter), x], -1))
-
-    # Optional deeper block-FFN: more capacity, same block-sparse structure.
     for i in range(self.dynlayers):
       x = self.sub(f'dynhid{i}', nn.BlockLinear, self.deter, g, **self.kw)(x)
       x = nn.act(self.act)(self.sub(f'dynhid{i}norm', nn.Norm, self.norm)(x))
-
-    # GRU-like cell: one BlockLinear -> 3*D, then three gates.
     x = self.sub('dyngru', nn.BlockLinear, 3 * self.deter, g, **self.kw)(x)
     gates = jnp.split(flat2group(x), 3, -1)
     reset, cand, update = [group2flat(x) for x in gates]
     reset = jax.nn.sigmoid(reset)
     cand = jnp.tanh(reset * cand)
     update = jax.nn.sigmoid(update - 1)
-    # h_t = u * h_tilde + (1-u) * h_{t-1}, h_tilde = tanh(r * c).
     deter = update * cand + (1 - update) * deter
     return deter
-
-  def _core_attn(self, deter, stoch, action, recurrent):
-    """Self-attention dynamics core (drop-in alternative to ``_core`` GRU).
-
-    Pipeline
-    --------
-    1. Project (deter, stoch, action) to the hidden width with the same
-       ``dynin0/1/2`` -> Norm -> Act layers as the GRU branch. The three
-       role-specific embeddings double as type embeddings, so the three
-       resulting vectors are distinguishable without any positional encoding.
-    2. Stack as a length-3 token sequence ``[B, 3, hidden]``.
-    3. Apply self-attention:
-       - ``recurrent=False``: a stacked Transformer (``self.attn_layers``
-         independent layers) using ``embodied.jax.nets.Transformer``.
-       - ``recurrent=True``  (TRM): a single attention+FFN block applied
-         ``self.trm_steps`` times with *shared* weights. Weight sharing is
-         realised by reusing the same submodule names inside the Python
-         loop, so ninjax resolves them to the same parameters each step.
-    4. Mean-pool over the 3 role tokens and project back to ``self.deter``
-       to produce the new deterministic state.
-
-    Notes
-    -----
-    The previous deterministic state ``deter`` enters as one of the three
-    role tokens, so the model is still recurrent in time (h_{t} depends on
-    h_{t-1}); only the *single-step* update mechanism is replaced relative
-    to the GRU core.
-    """
-    # Flatten stochastic state to the same [B, S*C] shape expected by Linear.
-    stoch = stoch.reshape((stoch.shape[0], -1))
-    # Per-dimension action scaling (same trick as the GRU branch).
-    action /= sg(jnp.maximum(1, jnp.abs(action)))
-
-    # Three role-specific embeddings to the hidden width. Reusing the same
-    # ``dynin0/1/2`` names as the GRU path is fine because only one core is
-    # active per run and the attention path neither reads nor writes the
-    # GRU-specific submodules (``dynhid*``, ``dyngru``).
-    x0 = self.sub('dynin0', nn.Linear, self.hidden, **self.kw)(deter)
-    x0 = nn.act(self.act)(self.sub('dynin0norm', nn.Norm, self.norm)(x0))
-    x1 = self.sub('dynin1', nn.Linear, self.hidden, **self.kw)(stoch)
-    x1 = nn.act(self.act)(self.sub('dynin1norm', nn.Norm, self.norm)(x1))
-    x2 = self.sub('dynin2', nn.Linear, self.hidden, **self.kw)(action)
-    x2 = nn.act(self.act)(self.sub('dynin2norm', nn.Norm, self.norm)(x2))
-
-    # 3-token sequence [B, 3, hidden]. Per-role ``dynin*`` weights act as
-    # type embeddings, so explicit positional encoding is unnecessary for
-    # this fixed length-3 sequence (and rope=False below is consistent).
-    tokens = jnp.stack([x0, x1, x2], axis=-2)
-
-    if recurrent:
-      # ---- Tiny Recursive Model: shared-weight attention block iterated.
-      # Same ``trm_*`` submodule names every step -> ninjax reuses params.
-      for _ in range(self.trm_steps):
-        tokens = self._trm_block(tokens)
-    else:
-      # ---- Standard stacked Transformer (independent per-layer weights).
-      tokens = self.sub(
-          'tx', nn.Transformer,
-          units=self.hidden, layers=self.attn_layers,
-          heads=self.attn_heads, ffup=self.attn_ffup,
-          rope=False, qknorm=self.attn_qknorm,
-          norm=self.norm, act=self.act, **self.kw)(tokens)
-
-    # Mean-pool across the 3 role tokens, then project back to deter width.
-    summary = tokens.mean(-2)
-    deter = self.sub('dynout', nn.Linear, self.deter, **self.kw)(summary)
-    deter = nn.act(self.act)(
-        self.sub('dynoutnorm', nn.Norm, self.norm)(deter))
-    return deter
-
-  def _trm_block(self, x):
-    """One TRM iteration: pre-norm self-attention + FFN with *shared* weights.
-
-    Designed to be called repeatedly inside a Python loop (see
-    ``_core_attn(..., recurrent=True)``). All submodule names are fixed so
-    that every iteration resolves to the same parameters, which is the
-    defining feature of a Tiny Recursive Model: more compute / depth without
-    additional parameters.
-    """
-    # Sub-block 1: self-attention with residual.
-    skip = x
-    x = self.sub('trm_norm1', nn.Norm, self.norm)(x)
-    x = self.sub(
-        'trm_attn', nn.Attention,
-        heads=self.attn_heads, rope=False,
-        qknorm=self.attn_qknorm, **self.kw)(x)
-    x = x + skip
-    # Sub-block 2: feed-forward with residual.
-    skip = x
-    x = self.sub('trm_norm2', nn.Norm, self.norm)(x)
-    x = self.sub(
-        'trm_ff1', nn.Linear, self.hidden * self.attn_ffup, **self.kw)(x)
-    x = nn.act(self.act)(x)
-    x = self.sub('trm_ff2', nn.Linear, self.hidden, **self.kw)(x)
-    x = x + skip
-    return x
 
   def _prior(self, feat):
     # Prior categorical over discrete state p(z_t | h_t) from deter.

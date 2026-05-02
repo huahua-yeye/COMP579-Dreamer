@@ -80,8 +80,8 @@ PY
   --logdir ~/logdir/dreamer/atari100k_pong_6h \
   --configs atari100k,size1m \
   --task atari100k_pong \
-  --run.steps 100000 \
-  --run.train_ratio 128 \
+  --run.steps 1.1e5 \
+  --run.train_ratio 256\
   --run.log_every 60 \
   --run.report_every 120 \
   --run.save_every 600
