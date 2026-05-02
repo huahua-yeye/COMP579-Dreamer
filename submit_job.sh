@@ -113,3 +113,41 @@ PY
 #   --agent.dyn.rssm.core trm \
 #   --agent.dyn.rssm.attn_heads 4 \
 #   --agent.dyn.rssm.trm_steps 8
+
+
+
+# ============================================================
+# Crafter ablation: GRU vs Transformer vs TRM
+# 目标: episode/score ≈ 10 (size12m + default crafter)
+# 单 GPU 预计每组 3-5h
+# ============================================================
+
+# ---- (1) GRU baseline ----
+# "$VENV_PY" dreamerv3/main.py \
+#   --logdir ~/logdir/dreamer/crafter_size12m_gru \
+#   --configs crafter,size12m \
+#   --run.log_every 60 \
+#   --run.report_every 300 \
+#   --run.save_every 1800
+
+# ---- (2) Transformer ----
+"$VENV_PY" dreamerv3/main.py \
+  --logdir ~/logdir/dreamer/crafter_size12m_tx \
+  --configs crafter,size12m \
+  --run.log_every 60 \
+  --run.report_every 300 \
+  --run.save_every 1800 \
+  --agent.dyn.rssm.core transformer \
+  --agent.dyn.rssm.attn_heads 4 \
+  --agent.dyn.rssm.attn_layers 1
+
+# ---- (3) TRM ----
+# "$VENV_PY" dreamerv3/main.py \
+#   --logdir ~/logdir/dreamer/crafter_size12m_trm \
+#   --configs crafter,size12m \
+#   --run.log_every 60 \
+#   --run.report_every 300 \
+#   --run.save_every 1800 \
+#   --agent.dyn.rssm.core trm \
+#   --agent.dyn.rssm.attn_heads 4 \
+#   --agent.dyn.rssm.trm_steps 8
