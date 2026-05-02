@@ -1,0 +1,13 @@
+
+Note: the module "cuda" cannot be unloaded because it was not loaded.
+
+Lmod a détecté l'erreur suivante : Le ou les module(s) suivants sont
+inconnus: "cuda/cuda-11.8"
+
+Veuillez vérifier l'orthographe ou le numéro de version. Vous pouvez aussi
+essayer "module spider ..."
+Il est aussi possible que votre cache soit désuète. Essayez :
+  $ module --ignore_cache load "cuda/cuda-11.8"
+
+
+
