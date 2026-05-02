@@ -38,7 +38,7 @@ export XLA_PYTHON_CLIENT_PREALLOCATE=false
 export XLA_PYTHON_CLIENT_MEM_FRACTION=0.5
 
 # 4) 使用本地 venv 的绝对路径 Python，避免 PATH 问题
-sl# source .venv/bin/activate && pip install --upgrade "jax[cuda12]" && pip install -U -r requirements.txt
+# source .venv/bin/activate && pip install --upgrade "jax[cuda12]" && pip install -U -r requirements.txt
 
 # if [ ! -x "$VENV_PY" ]; then
 #   echo "ERROR: venv python not found at $VENV_PY"
