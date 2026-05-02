@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --job-name=dreamerv3
-#SBATCH --account=winter2026-comp579
 #SBATCH --output=logs/out_%j.txt
 #SBATCH --error=logs/err_%j.txt
 #SBATCH --time=12:00:00
