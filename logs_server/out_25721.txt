@@ -1,0 +1,2205 @@
+===== JOB INFO =====
+HOSTNAME: gpu-teach-01
+DATE: Sun May  3 10:19:07 AM EDT 2026
+PWD: /home/2026/cyu2/dreamerv3
+PYTHON: /home/2026/cyu2/dreamerv3/.venv/bin/python3
+TMPDIR: /home/2026/cyu2/tmp/25721
+Python 3.10.12
+Sun May  3 10:19:07 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 555.42.06              Driver Version: 555.42.06      CUDA Version: 12.5     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX A2000 12GB          Off |   00000000:4F:00.0 Off |                  Off |
+| 30%   22C    P8              9W /   70W |       2MiB /  12282MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+====================
+pip 26.1 from /home/2026/cyu2/dreamerv3/.venv/lib/python3.10/site-packages/pip (python 3.10)
+JAX version: 0.4.28
+JAX devices: [cuda(id=0)]
+JAX backend: gpu
+---  ___                           __   ______ ---
+--- |   \ _ _ ___ __ _ _ __  ___ _ \ \ / /__ / ---
+--- | |) | '_/ -_) _` | '  \/ -_) '/\ V / |_ \ ---
+--- |___/|_| \___\__,_|_|_|_\___|_|  \_/ |___/ ---
+Replica: 0 / 1
+Logdir: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm
+Run script: train
+Observations
+  image            Space(uint8, shape=(64, 64, 3), low=0, high=255)
+  reward           Space(float32, shape=(), low=-inf, high=inf)
+  is_first         Space(bool, shape=(), low=False, high=True)
+  is_last          Space(bool, shape=(), low=False, high=True)
+  is_terminal      Space(bool, shape=(), low=False, high=True)
+Actions
+  action           Space(int32, shape=(), low=0, high=17)
+Extras
+  consec           Space(int32, shape=(), low=-2147483648, high=2147483647)
+  stepid           Space(uint8, shape=(20,), low=0, high=255)
+  dyn/deter        Space(float32, shape=(2048,), low=-inf, high=inf)
+  dyn/stoch        Space(float32, shape=(32, 16), low=-inf, high=inf)
+JAX devices (1): [cuda:0]
+Policy devices: cuda:0
+Train devices:  cuda:0
+Initializing parameters...
+Optimizer opt has 7,873,107 params:
+     3,357,312 dyn
+     1,272,003 dec
+       853,503 val
+       792,337 pol
+       721,407 rew
+       656,129 con
+       220,416 enc
+Done initializing!
+Compiling 1 checkpoint groups...
+Largest checkpoint group: 0 GB
+Compiling train and report...
+Train cost analysis:
+  FLOPS:            1.6e+11
+  Memory (temp):    0.0e+00
+  Memory (inputs):  0.0e+00
+  Memory (outputs): 0.0e+00
+  Memory (code):    4.3e+06
+
+Report cost analysis:
+  FLOPS:            5.0e+08
+  Memory (temp):    0.0e+00
+  Memory (inputs):  0.0e+00
+  Memory (outputs): 0.0e+00
+  Memory (code):    8.1e+06
+
+Done compiling!
+Found existing checkpoint.
+Loading checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260502T172011F966530
+Loaded checkpoint.
+Start training loop
+
+--------------------[Agent Step 15_330]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 144 / train/loss/con 0.03 / train/loss/dyn 9.57 / train/loss/image 46.68 / train/loss/policy 2.6e-3 / train/loss/rep 9.57 / train/loss/repval 3.21 / train/loss/rew 0.14 / train/loss/value 2.48 / train/rand/action 0.32 / replay/replay_ratio 772.35 / fps/policy 2.86 / fps/train 1465.1
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 15_520]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 189 / train/loss/con 0.02 / train/loss/dyn 7.18 / train/loss/image 43.05 / train/loss/policy 6.2e-3 / train/loss/rep 7.18 / train/loss/repval 2.85 / train/loss/rew 0.12 / train/loss/value 2.16 / train/rand/action 0.35 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.06
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 15_710]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 116 / train/loss/con 0.02 / train/loss/dyn 7.22 / train/loss/image 41.41 / train/loss/policy 0.02 / train/loss/rep 7.22 / train/loss/repval 2.82 / train/loss/rew 0.12 / train/loss/value 2.23 / train/rand/action 0.34 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1594.73
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 15_900]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 95 / train/loss/con 0.02 / train/loss/dyn 7.23 / train/loss/image 41.17 / train/loss/policy 8.3e-3 / train/loss/rep 7.23 / train/loss/repval 2.8 / train/loss/rew 0.12 / train/loss/value 2.16 / train/rand/action 0.3 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1568.6
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 16_090]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 157 / train/loss/con 0.02 / train/loss/dyn 7.3 / train/loss/image 41.68 / train/loss/policy 5.7e-3 / train/loss/rep 7.3 / train/loss/repval 2.86 / train/loss/rew 0.12 / train/loss/value 2.16 / train/rand/action 0.28 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.22
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 16_280]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 166 / train/loss/con 0.02 / train/loss/dyn 7.37 / train/loss/image 44.17 / train/loss/policy 2.4e-3 / train/loss/rep 7.37 / train/loss/repval 2.93 / train/loss/rew 0.11 / train/loss/value 2.17 / train/rand/action 0.27 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.78
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 16_470]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 159 / train/loss/con 0.02 / train/loss/dyn 7.37 / train/loss/image 43.53 / train/loss/policy 2e-3 / train/loss/rep 7.37 / train/loss/repval 2.94 / train/loss/rew 0.13 / train/loss/value 2.15 / train/rand/action 0.27 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1593.16
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 16_660]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 179 / train/loss/con 0.02 / train/loss/dyn 7.39 / train/loss/image 43.86 / train/loss/policy 2.5e-3 / train/loss/rep 7.39 / train/loss/repval 2.83 / train/loss/rew 0.12 / train/loss/value 2.1 / train/rand/action 0.26 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 16_850]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 178 / train/loss/con 0.02 / train/loss/dyn 7.29 / train/loss/image 43.02 / train/loss/policy 4.1e-3 / train/loss/rep 7.29 / train/loss/repval 2.8 / train/loss/rew 0.11 / train/loss/value 2.11 / train/rand/action 0.26 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 17_040]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 146 / train/loss/con 0.02 / train/loss/dyn 7.43 / train/loss/image 42.65 / train/loss/policy 3.9e-3 / train/loss/rep 7.43 / train/loss/repval 2.8 / train/loss/rew 0.11 / train/loss/value 2.09 / train/rand/action 0.26 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.21
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 17_230]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 181 / train/loss/con 0.02 / train/loss/dyn 7.47 / train/loss/image 41.91 / train/loss/policy 2.3e-3 / train/loss/rep 7.47 / train/loss/repval 2.83 / train/loss/rew 0.11 / train/loss/value 2.08 / train/rand/action 0.25 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.62
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 17_420]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 7.49 / train/loss/image 43.43 / train/loss/policy 3.4e-3 / train/loss/rep 7.49 / train/loss/repval 2.82 / train/loss/rew 0.11 / train/loss/value 2.1 / train/rand/action 0.27 / replay/replay_ratio 520 / fps/policy 3.16 / fps/train 1615.49
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 17_610]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 377 / train/loss/con 0.02 / train/loss/dyn 7.5 / train/loss/image 42.32 / train/loss/policy 2.6e-3 / train/loss/rep 7.5 / train/loss/repval 2.79 / train/loss/rew 0.11 / train/loss/value 2.07 / train/rand/action 0.28 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.85
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 17_800]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 39 / train/loss/con 0.02 / train/loss/dyn 7.57 / train/loss/image 43.14 / train/loss/policy 3.7e-3 / train/loss/rep 7.57 / train/loss/repval 2.84 / train/loss/rew 0.12 / train/loss/value 2.13 / train/rand/action 0.29 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.75
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 17_990]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 214 / train/loss/con 0.02 / train/loss/dyn 7.67 / train/loss/image 43.22 / train/loss/policy 2e-3 / train/loss/rep 7.67 / train/loss/repval 2.83 / train/loss/rew 0.11 / train/loss/value 2.09 / train/rand/action 0.28 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.77
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 18_180]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 231 / train/loss/con 0.02 / train/loss/dyn 7.54 / train/loss/image 41.44 / train/loss/policy 3.5e-3 / train/loss/rep 7.54 / train/loss/repval 2.84 / train/loss/rew 0.11 / train/loss/value 2.12 / train/rand/action 0.27 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1594.5
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 18_370]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 161 / train/loss/con 0.02 / train/loss/dyn 7.58 / train/loss/image 42.7 / train/loss/policy 6.1e-3 / train/loss/rep 7.58 / train/loss/repval 2.81 / train/loss/rew 0.11 / train/loss/value 2.17 / train/rand/action 0.25 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.36
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 18_560]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 187 / train/loss/con 0.02 / train/loss/dyn 7.46 / train/loss/image 40.74 / train/loss/policy 6.7e-3 / train/loss/rep 7.46 / train/loss/repval 2.76 / train/loss/rew 0.1 / train/loss/value 2.14 / train/rand/action 0.24 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.54
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 18_750]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 203 / train/loss/con 0.02 / train/loss/dyn 7.67 / train/loss/image 42.72 / train/loss/policy 5.8e-3 / train/loss/rep 7.67 / train/loss/repval 2.82 / train/loss/rew 0.11 / train/loss/value 2.18 / train/rand/action 0.23 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.32
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 18_940]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 253 / train/loss/con 0.02 / train/loss/dyn 7.71 / train/loss/image 42.85 / train/loss/policy 0.01 / train/loss/rep 7.71 / train/loss/repval 2.86 / train/loss/rew 0.11 / train/loss/value 2.33 / train/rand/action 0.21 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1549
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 19_130]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 175 / train/loss/con 0.02 / train/loss/dyn 7.7 / train/loss/image 43.3 / train/loss/policy 8.1e-3 / train/loss/rep 7.7 / train/loss/repval 2.75 / train/loss/rew 0.11 / train/loss/value 2.23 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.03
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 19_320]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 183 / train/loss/con 0.02 / train/loss/dyn 7.87 / train/loss/image 45.17 / train/loss/policy 8.5e-3 / train/loss/rep 7.87 / train/loss/repval 2.81 / train/loss/rew 0.11 / train/loss/value 2.25 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1593.94
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 19_510]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 162 / train/loss/con 0.02 / train/loss/dyn 7.7 / train/loss/image 43.23 / train/loss/policy 4.8e-3 / train/loss/rep 7.7 / train/loss/repval 2.81 / train/loss/rew 0.11 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.93
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 19_700]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 158 / train/loss/con 0.02 / train/loss/dyn 7.77 / train/loss/image 43.97 / train/loss/policy 4.2e-3 / train/loss/rep 7.77 / train/loss/repval 2.8 / train/loss/rew 0.1 / train/loss/value 2.15 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.11
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 19_890]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 7.79 / train/loss/image 43.56 / train/loss/policy 1.5e-3 / train/loss/rep 7.79 / train/loss/repval 2.84 / train/loss/rew 0.11 / train/loss/value 2.13 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.35
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 20_080]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 34 / train/loss/con 0.02 / train/loss/dyn 7.81 / train/loss/image 43.3 / train/loss/policy 2.8e-3 / train/loss/rep 7.81 / train/loss/repval 2.9 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.01 / fps/train 1538.92
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 20_270]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 185 / train/loss/con 0.02 / train/loss/dyn 7.77 / train/loss/image 42.61 / train/loss/policy 2.7e-3 / train/loss/rep 7.77 / train/loss/repval 2.84 / train/loss/rew 0.1 / train/loss/value 2.12 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.49
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 20_460]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 168 / train/loss/con 0.02 / train/loss/dyn 7.72 / train/loss/image 42.12 / train/loss/policy 4.4e-3 / train/loss/rep 7.72 / train/loss/repval 2.84 / train/loss/rew 0.1 / train/loss/value 2.12 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.49
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 20_650]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 141 / train/loss/con 0.02 / train/loss/dyn 7.76 / train/loss/image 43.06 / train/loss/policy 3.2e-3 / train/loss/rep 7.76 / train/loss/repval 2.78 / train/loss/rew 0.1 / train/loss/value 2.09 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.73
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T105148F969426
+Saved checkpoint.
+
+--------------------[Agent Step 20_840]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 214 / train/loss/con 0.02 / train/loss/dyn 7.81 / train/loss/image 42.8 / train/loss/policy 2.4e-4 / train/loss/rep 7.81 / train/loss/repval 2.89 / train/loss/rew 0.1 / train/loss/value 2.12 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1547.88
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 21_030]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 7.75 / train/loss/image 42.68 / train/loss/policy 6.7e-4 / train/loss/rep 7.75 / train/loss/repval 2.87 / train/loss/rew 0.11 / train/loss/value 2.14 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.29
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 21_220]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 149 / train/loss/con 0.02 / train/loss/dyn 7.89 / train/loss/image 43.58 / train/loss/policy 1.6e-3 / train/loss/rep 7.89 / train/loss/repval 2.91 / train/loss/rew 0.1 / train/loss/value 2.2 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.15
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 21_410]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 171 / train/loss/con 0.02 / train/loss/dyn 7.81 / train/loss/image 42.79 / train/loss/policy 1.4e-3 / train/loss/rep 7.81 / train/loss/repval 2.88 / train/loss/rew 0.1 / train/loss/value 2.19 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 21_600]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 165 / train/loss/con 0.02 / train/loss/dyn 7.85 / train/loss/image 41.89 / train/loss/policy -4.5e-5 / train/loss/rep 7.85 / train/loss/repval 2.87 / train/loss/rew 0.1 / train/loss/value 2.15 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.06
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 21_790]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 158 / train/loss/con 0.02 / train/loss/dyn 7.91 / train/loss/image 42.8 / train/loss/policy 1.2e-3 / train/loss/rep 7.91 / train/loss/repval 2.9 / train/loss/rew 0.09 / train/loss/value 2.22 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1563.67
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 21_980]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 148 / train/loss/con 0.02 / train/loss/dyn 7.88 / train/loss/image 43.1 / train/loss/policy 1.7e-3 / train/loss/rep 7.88 / train/loss/repval 2.9 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.4
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 22_170]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 141 / train/loss/con 0.02 / train/loss/dyn 8.07 / train/loss/image 42.78 / train/loss/policy 1.2e-3 / train/loss/rep 8.07 / train/loss/repval 2.92 / train/loss/rew 0.1 / train/loss/value 2.16 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.59
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 22_360]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 179 / train/loss/con 0.02 / train/loss/dyn 7.97 / train/loss/image 41.57 / train/loss/policy 8.8e-4 / train/loss/rep 7.97 / train/loss/repval 2.87 / train/loss/rew 0.1 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.04
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 22_550]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 171 / train/loss/con 0.02 / train/loss/dyn 8.1 / train/loss/image 42.13 / train/loss/policy 2.8e-3 / train/loss/rep 8.1 / train/loss/repval 2.94 / train/loss/rew 0.1 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.48
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 22_740]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 179 / train/loss/con 0.02 / train/loss/dyn 7.99 / train/loss/image 41.4 / train/loss/policy 1.9e-3 / train/loss/rep 7.99 / train/loss/repval 2.91 / train/loss/rew 0.1 / train/loss/value 2.2 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.89
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 22_930]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 180 / train/loss/con 0.02 / train/loss/dyn 8 / train/loss/image 41.31 / train/loss/policy 7.9e-4 / train/loss/rep 8 / train/loss/repval 2.93 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 23_120]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 184 / train/loss/con 0.02 / train/loss/dyn 7.98 / train/loss/image 40.49 / train/loss/policy 1.5e-3 / train/loss/rep 7.98 / train/loss/repval 2.89 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.59
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 23_310]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 153 / train/loss/con 0.02 / train/loss/dyn 8.13 / train/loss/image 41.74 / train/loss/policy 2e-3 / train/loss/rep 8.13 / train/loss/repval 2.9 / train/loss/rew 0.1 / train/loss/value 2.19 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.71
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 23_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 151 / train/loss/con 0.02 / train/loss/dyn 8.03 / train/loss/image 40.84 / train/loss/policy 6.5e-4 / train/loss/rep 8.03 / train/loss/repval 2.91 / train/loss/rew 0.1 / train/loss/value 2.19 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 23_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 137 / train/loss/con 0.02 / train/loss/dyn 8.12 / train/loss/image 41.08 / train/loss/policy 2.1e-3 / train/loss/rep 8.12 / train/loss/repval 2.87 / train/loss/rew 0.1 / train/loss/value 2.18 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 23_880]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 153 / train/loss/con 0.02 / train/loss/dyn 8.14 / train/loss/image 40.81 / train/loss/policy 4.5e-3 / train/loss/rep 8.14 / train/loss/repval 2.92 / train/loss/rew 0.1 / train/loss/value 2.2 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.64
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 24_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 8.17 / train/loss/image 40.45 / train/loss/policy 3.3e-3 / train/loss/rep 8.17 / train/loss/repval 2.91 / train/loss/rew 0.1 / train/loss/value 2.21 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1562.09
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 24_260]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 140 / train/loss/con 0.02 / train/loss/dyn 8.16 / train/loss/image 40.54 / train/loss/policy 4.1e-3 / train/loss/rep 8.16 / train/loss/repval 2.91 / train/loss/rew 0.1 / train/loss/value 2.26 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.92
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 24_450]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 173 / train/loss/con 0.02 / train/loss/dyn 8.27 / train/loss/image 41.84 / train/loss/policy 3.9e-3 / train/loss/rep 8.27 / train/loss/repval 2.87 / train/loss/rew 0.1 / train/loss/value 2.26 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.93
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 24_640]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 183 / train/loss/con 0.02 / train/loss/dyn 8.29 / train/loss/image 41.14 / train/loss/policy 3.1e-3 / train/loss/rep 8.29 / train/loss/repval 2.85 / train/loss/rew 0.1 / train/loss/value 2.21 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.6
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 24_830]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 8.36 / train/loss/image 42.75 / train/loss/policy 1.5e-3 / train/loss/rep 8.36 / train/loss/repval 2.88 / train/loss/rew 0.1 / train/loss/value 2.22 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.82
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 25_020]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 185 / train/loss/con 0.02 / train/loss/dyn 8.37 / train/loss/image 41.61 / train/loss/policy 2.8e-3 / train/loss/rep 8.37 / train/loss/repval 2.83 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.3
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 25_210]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 189 / train/loss/con 0.02 / train/loss/dyn 8.32 / train/loss/image 40.69 / train/loss/policy 2.1e-3 / train/loss/rep 8.32 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.16 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.27
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 25_400]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 225 / train/loss/con 0.02 / train/loss/dyn 8.44 / train/loss/image 41.32 / train/loss/policy 2.2e-3 / train/loss/rep 8.44 / train/loss/repval 2.89 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 25_590]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 140 / train/loss/con 0.02 / train/loss/dyn 8.52 / train/loss/image 41.18 / train/loss/policy 2.7e-3 / train/loss/rep 8.52 / train/loss/repval 2.86 / train/loss/rew 0.1 / train/loss/value 2.17 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.76
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 25_780]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 8.42 / train/loss/image 41.28 / train/loss/policy 2.5e-3 / train/loss/rep 8.42 / train/loss/repval 2.82 / train/loss/rew 0.09 / train/loss/value 2.17 / train/rand/action 0.21 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1567.62
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 25_970]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 157 / train/loss/con 0.02 / train/loss/dyn 8.5 / train/loss/image 41.64 / train/loss/policy 3.9e-3 / train/loss/rep 8.5 / train/loss/repval 2.86 / train/loss/rew 0.1 / train/loss/value 2.19 / train/rand/action 0.21 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.02
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 26_160]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 165 / train/loss/con 0.02 / train/loss/dyn 8.59 / train/loss/image 43.22 / train/loss/policy 3.5e-3 / train/loss/rep 8.59 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.21 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1593.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T112150F918279
+Saved checkpoint.
+
+--------------------[Agent Step 26_340]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 37 / train/loss/con 0.02 / train/loss/dyn 8.5 / train/loss/image 41.43 / train/loss/policy 3.7e-3 / train/loss/rep 8.5 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.19 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 2.98 / fps/train 1523.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 26_530]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 256 / train/loss/con 0.02 / train/loss/dyn 8.65 / train/loss/image 42.74 / train/loss/policy 4.4e-3 / train/loss/rep 8.65 / train/loss/repval 2.89 / train/loss/rew 0.09 / train/loss/value 2.23 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.51
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 26_720]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 8.58 / train/loss/image 41.43 / train/loss/policy 3.7e-3 / train/loss/rep 8.58 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.17 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.16 / fps/train 1617.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 26_910]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 238 / train/loss/con 0.02 / train/loss/dyn 8.66 / train/loss/image 41.78 / train/loss/policy 2.6e-3 / train/loss/rep 8.66 / train/loss/repval 2.85 / train/loss/rew 0.09 / train/loss/value 2.18 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.94
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 27_100]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 8.65 / train/loss/image 41.37 / train/loss/policy 2.8e-3 / train/loss/rep 8.65 / train/loss/repval 2.8 / train/loss/rew 0.09 / train/loss/value 2.17 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.01
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 27_290]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 135 / train/loss/con 0.02 / train/loss/dyn 8.77 / train/loss/image 42.27 / train/loss/policy 2.4e-3 / train/loss/rep 8.77 / train/loss/repval 2.84 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1563.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 27_480]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 160 / train/loss/con 0.02 / train/loss/dyn 8.71 / train/loss/image 41.69 / train/loss/policy 2.2e-3 / train/loss/rep 8.71 / train/loss/repval 2.86 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.88
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 27_670]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 153 / train/loss/con 0.02 / train/loss/dyn 8.89 / train/loss/image 43.69 / train/loss/policy 3.4e-3 / train/loss/rep 8.89 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.23
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 27_860]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 8.81 / train/loss/image 41.99 / train/loss/policy 2.4e-3 / train/loss/rep 8.81 / train/loss/repval 2.82 / train/loss/rew 0.09 / train/loss/value 2.21 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.65
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 28_050]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 8.7 / train/loss/image 41.41 / train/loss/policy 3.1e-3 / train/loss/rep 8.7 / train/loss/repval 2.85 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1613.64
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 28_240]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 383 / train/loss/con 0.02 / train/loss/dyn 8.87 / train/loss/image 41.82 / train/loss/policy 2.9e-3 / train/loss/rep 8.87 / train/loss/repval 2.82 / train/loss/rew 0.09 / train/loss/value 2.18 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.77
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 28_430]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 8.87 / train/loss/image 41.68 / train/loss/policy 3.4e-3 / train/loss/rep 8.87 / train/loss/repval 2.85 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.29
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 28_620]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 148 / train/loss/con 0.02 / train/loss/dyn 8.82 / train/loss/image 40.85 / train/loss/policy 2.7e-3 / train/loss/rep 8.82 / train/loss/repval 2.86 / train/loss/rew 0.09 / train/loss/value 2.23 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1559.14
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 28_810]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 173 / train/loss/con 0.02 / train/loss/dyn 8.91 / train/loss/image 40.7 / train/loss/policy 3e-3 / train/loss/rep 8.91 / train/loss/repval 2.83 / train/loss/rew 0.09 / train/loss/value 2.2 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.34
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 29_000]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 178 / train/loss/con 0.02 / train/loss/dyn 8.89 / train/loss/image 42.21 / train/loss/policy 2.3e-3 / train/loss/rep 8.89 / train/loss/repval 2.82 / train/loss/rew 0.09 / train/loss/value 2.17 / train/rand/action 0.21 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.07
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 29_190]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 175 / train/loss/con 0.02 / train/loss/dyn 8.9 / train/loss/image 42.37 / train/loss/policy 4.6e-3 / train/loss/rep 8.9 / train/loss/repval 2.79 / train/loss/rew 0.08 / train/loss/value 2.16 / train/rand/action 0.23 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.8
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 29_380]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 9 / train/loss/image 42.24 / train/loss/policy 5.6e-3 / train/loss/rep 9 / train/loss/repval 2.83 / train/loss/rew 0.08 / train/loss/value 2.22 / train/rand/action 0.25 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.48
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 29_570]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 166 / train/loss/con 0.02 / train/loss/dyn 8.93 / train/loss/image 41.02 / train/loss/policy 8.6e-3 / train/loss/rep 8.93 / train/loss/repval 2.81 / train/loss/rew 0.08 / train/loss/value 2.22 / train/rand/action 0.25 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.86
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 29_760]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 217 / train/loss/con 0.02 / train/loss/dyn 9 / train/loss/image 41.6 / train/loss/policy 8.9e-3 / train/loss/rep 9 / train/loss/repval 2.77 / train/loss/rew 0.09 / train/loss/value 2.19 / train/rand/action 0.23 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 29_950]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 8.93 / train/loss/image 40.76 / train/loss/policy 6.4e-3 / train/loss/rep 8.93 / train/loss/repval 2.8 / train/loss/rew 0.08 / train/loss/value 2.18 / train/rand/action 0.21 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.7
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 30_140]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 9.08 / train/loss/image 42.14 / train/loss/policy 6e-3 / train/loss/rep 9.08 / train/loss/repval 2.77 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1611.95
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 30_330]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 278 / train/loss/con 0.02 / train/loss/dyn 9.02 / train/loss/image 40.67 / train/loss/policy 7.1e-3 / train/loss/rep 9.02 / train/loss/repval 2.73 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1592.32
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 30_520]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 133 / train/loss/con 0.02 / train/loss/dyn 8.93 / train/loss/image 40.08 / train/loss/policy 4.9e-3 / train/loss/rep 8.93 / train/loss/repval 2.77 / train/loss/rew 0.08 / train/loss/value 2.09 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.01 / fps/train 1542.11
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 30_710]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 8.98 / train/loss/image 40.32 / train/loss/policy 6.9e-3 / train/loss/rep 8.98 / train/loss/repval 2.74 / train/loss/rew 0.08 / train/loss/value 2.1 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.16 / fps/train 1615.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 30_900]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 5.1 / episode/length 310 / train/loss/con 0.02 / train/loss/dyn 8.94 / train/loss/image 40.77 / train/loss/policy 5.6e-3 / train/loss/rep 8.94 / train/loss/repval 2.75 / train/loss/rew 0.08 / train/loss/value 2.08 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.86
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 31_090]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 9.09 / train/loss/image 39.98 / train/loss/policy 6e-3 / train/loss/rep 9.09 / train/loss/repval 2.84 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.28
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 31_280]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 9.07 / train/loss/image 40.03 / train/loss/policy 3.8e-3 / train/loss/rep 9.07 / train/loss/repval 2.79 / train/loss/rew 0.08 / train/loss/value 2.1 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.74
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 31_470]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 180 / train/loss/con 0.02 / train/loss/dyn 9.19 / train/loss/image 41.27 / train/loss/policy 4.4e-3 / train/loss/rep 9.19 / train/loss/repval 2.81 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.78
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 31_660]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 69 / train/loss/con 0.02 / train/loss/dyn 9.05 / train/loss/image 40.86 / train/loss/policy 4.1e-3 / train/loss/rep 9.05 / train/loss/repval 2.81 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1563.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 31_850]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 180 / train/loss/con 0.02 / train/loss/dyn 9.16 / train/loss/image 40.53 / train/loss/policy 4.5e-3 / train/loss/rep 9.16 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.53
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T115151F159663
+Saved checkpoint.
+
+--------------------[Agent Step 32_030]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 9.11 / train/loss/image 40.07 / train/loss/policy 3e-3 / train/loss/rep 9.11 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 2.93 / fps/train 1500.89
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 32_220]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 159 / train/loss/con 0.02 / train/loss/dyn 9.06 / train/loss/image 40.14 / train/loss/policy 3.4e-3 / train/loss/rep 9.06 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.09
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 32_410]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 9.11 / train/loss/image 40.75 / train/loss/policy 3.2e-3 / train/loss/rep 9.11 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.13 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1612.67
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 32_600]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 260 / train/loss/con 0.02 / train/loss/dyn 9.2 / train/loss/image 40.58 / train/loss/policy 3.4e-3 / train/loss/rep 9.2 / train/loss/repval 2.76 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.17
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 32_790]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 160 / train/loss/con 0.02 / train/loss/dyn 9.21 / train/loss/image 41.13 / train/loss/policy 4.9e-3 / train/loss/rep 9.21 / train/loss/repval 2.76 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.2
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 32_980]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 197 / train/loss/con 0.02 / train/loss/dyn 9.24 / train/loss/image 40.94 / train/loss/policy 3.7e-3 / train/loss/rep 9.24 / train/loss/repval 2.79 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.46
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 33_170]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 214 / train/loss/con 0.02 / train/loss/dyn 9.09 / train/loss/image 40.39 / train/loss/policy 3.3e-3 / train/loss/rep 9.09 / train/loss/repval 2.76 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.4
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 33_360]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 91 / train/loss/con 0.02 / train/loss/dyn 9.2 / train/loss/image 39.57 / train/loss/policy 2.5e-3 / train/loss/rep 9.2 / train/loss/repval 2.77 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.01 / fps/train 1543.01
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 33_550]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 164 / train/loss/con 0.02 / train/loss/dyn 9.19 / train/loss/image 40.41 / train/loss/policy 3.7e-3 / train/loss/rep 9.19 / train/loss/repval 2.84 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.59
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 33_740]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 151 / train/loss/con 0.02 / train/loss/dyn 9.31 / train/loss/image 40.45 / train/loss/policy 3.5e-3 / train/loss/rep 9.31 / train/loss/repval 2.86 / train/loss/rew 0.08 / train/loss/value 2.15 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1584.75
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 33_930]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 201 / train/loss/con 0.02 / train/loss/dyn 9.27 / train/loss/image 39.58 / train/loss/policy 2.4e-3 / train/loss/rep 9.27 / train/loss/repval 2.78 / train/loss/rew 0.08 / train/loss/value 2.11 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 34_120]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 189 / train/loss/con 0.02 / train/loss/dyn 9.2 / train/loss/image 39.15 / train/loss/policy 4.6e-3 / train/loss/rep 9.2 / train/loss/repval 2.78 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.7
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 34_310]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 187 / train/loss/con 0.02 / train/loss/dyn 9.16 / train/loss/image 38.47 / train/loss/policy 4.7e-3 / train/loss/rep 9.16 / train/loss/repval 2.8 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.36
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 34_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 176 / train/loss/con 0.02 / train/loss/dyn 9.16 / train/loss/image 38.37 / train/loss/policy 3e-3 / train/loss/rep 9.16 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.13 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1592.16
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 34_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 171 / train/loss/con 0.02 / train/loss/dyn 9.22 / train/loss/image 39.19 / train/loss/policy 2.5e-3 / train/loss/rep 9.22 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.12 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.33
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 34_880]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 191 / train/loss/con 0.02 / train/loss/dyn 9.38 / train/loss/image 39.87 / train/loss/policy 2.5e-3 / train/loss/rep 9.38 / train/loss/repval 2.8 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 35_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 165 / train/loss/con 0.02 / train/loss/dyn 9.24 / train/loss/image 38.59 / train/loss/policy 3.5e-3 / train/loss/rep 9.24 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.36
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 35_260]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 186 / train/loss/con 0.02 / train/loss/dyn 9.25 / train/loss/image 38.95 / train/loss/policy 2.3e-3 / train/loss/rep 9.25 / train/loss/repval 2.84 / train/loss/rew 0.08 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.26
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 35_450]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 188 / train/loss/con 0.02 / train/loss/dyn 9.38 / train/loss/image 39.47 / train/loss/policy 3.3e-3 / train/loss/rep 9.38 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.62
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 35_640]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 184 / train/loss/con 0.02 / train/loss/dyn 9.35 / train/loss/image 38.94 / train/loss/policy 2.8e-3 / train/loss/rep 9.35 / train/loss/repval 2.83 / train/loss/rew 0.08 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.12
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 35_830]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 332 / train/loss/con 0.02 / train/loss/dyn 9.44 / train/loss/image 38.91 / train/loss/policy 3.4e-3 / train/loss/rep 9.44 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.2 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 36_020]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 151 / train/loss/con 0.02 / train/loss/dyn 9.53 / train/loss/image 40.02 / train/loss/policy 2.8e-3 / train/loss/rep 9.53 / train/loss/repval 2.87 / train/loss/rew 0.08 / train/loss/value 2.2 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.32
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 36_210]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 186 / train/loss/con 0.02 / train/loss/dyn 9.52 / train/loss/image 39.17 / train/loss/policy 3.8e-3 / train/loss/rep 9.52 / train/loss/repval 2.86 / train/loss/rew 0.08 / train/loss/value 2.23 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.66
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 36_400]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 202 / train/loss/con 0.02 / train/loss/dyn 9.38 / train/loss/image 39.27 / train/loss/policy 3.4e-3 / train/loss/rep 9.38 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.25 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.06
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 36_590]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 164 / train/loss/con 0.02 / train/loss/dyn 9.4 / train/loss/image 39.86 / train/loss/policy 2.4e-3 / train/loss/rep 9.4 / train/loss/repval 2.83 / train/loss/rew 0.08 / train/loss/value 2.21 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.46
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 36_780]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 145 / train/loss/con 0.02 / train/loss/dyn 9.49 / train/loss/image 40.1 / train/loss/policy 1.9e-3 / train/loss/rep 9.49 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.93
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 36_970]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 202 / train/loss/con 0.02 / train/loss/dyn 9.53 / train/loss/image 40.05 / train/loss/policy 3.2e-3 / train/loss/rep 9.53 / train/loss/repval 2.86 / train/loss/rew 0.08 / train/loss/value 2.23 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.24
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 37_160]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 195 / train/loss/con 0.02 / train/loss/dyn 9.49 / train/loss/image 39.95 / train/loss/policy 2.6e-3 / train/loss/rep 9.49 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.05
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 37_350]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 140 / train/loss/con 0.02 / train/loss/dyn 9.65 / train/loss/image 40.61 / train/loss/policy 3.4e-3 / train/loss/rep 9.65 / train/loss/repval 2.86 / train/loss/rew 0.08 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.83
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T122154F215669
+Saved checkpoint.
+
+--------------------[Agent Step 37_540]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 243 / train/loss/con 0.02 / train/loss/dyn 9.77 / train/loss/image 39.79 / train/loss/policy 3.2e-3 / train/loss/rep 9.77 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1547.42
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 37_730]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 9.64 / train/loss/image 40.04 / train/loss/policy 2.8e-3 / train/loss/rep 9.64 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.14 / fps/train 1606.76
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 37_920]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 304 / train/loss/con 0.02 / train/loss/dyn 9.67 / train/loss/image 39.44 / train/loss/policy 3e-3 / train/loss/rep 9.67 / train/loss/repval 2.85 / train/loss/rew 0.08 / train/loss/value 2.22 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.85
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 38_110]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 93 / train/loss/con 0.02 / train/loss/dyn 9.55 / train/loss/image 39.19 / train/loss/policy 3.8e-3 / train/loss/rep 9.55 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 38_300]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 236 / train/loss/con 0.02 / train/loss/dyn 9.66 / train/loss/image 39.61 / train/loss/policy 2.8e-3 / train/loss/rep 9.66 / train/loss/repval 2.9 / train/loss/rew 0.07 / train/loss/value 2.25 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.98
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 38_490]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 161 / train/loss/con 0.02 / train/loss/dyn 9.82 / train/loss/image 40.76 / train/loss/policy 2.1e-3 / train/loss/rep 9.82 / train/loss/repval 2.88 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.19
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 38_680]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 175 / train/loss/con 0.02 / train/loss/dyn 9.76 / train/loss/image 39.8 / train/loss/policy 2.4e-3 / train/loss/rep 9.76 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.33
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 38_870]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 9.71 / train/loss/image 39.78 / train/loss/policy 1.3e-3 / train/loss/rep 9.71 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.57
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 39_060]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 197 / train/loss/con 0.02 / train/loss/dyn 9.67 / train/loss/image 39.31 / train/loss/policy 2.4e-3 / train/loss/rep 9.67 / train/loss/repval 2.8 / train/loss/rew 0.08 / train/loss/value 2.15 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.36
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 39_250]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 257 / train/loss/con 0.02 / train/loss/dyn 9.79 / train/loss/image 39.2 / train/loss/policy 4.1e-3 / train/loss/rep 9.79 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.1
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 39_440]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 164 / train/loss/con 0.02 / train/loss/dyn 9.79 / train/loss/image 40.14 / train/loss/policy 1.5e-3 / train/loss/rep 9.79 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 39_630]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 168 / train/loss/con 0.02 / train/loss/dyn 9.79 / train/loss/image 39.09 / train/loss/policy 3e-3 / train/loss/rep 9.79 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.58
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 39_820]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 71 / train/loss/con 0.02 / train/loss/dyn 9.65 / train/loss/image 39.12 / train/loss/policy 3.3e-3 / train/loss/rep 9.65 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.76
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 40_010]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 205 / train/loss/con 0.02 / train/loss/dyn 9.8 / train/loss/image 38.73 / train/loss/policy 3.7e-3 / train/loss/rep 9.8 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.06
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 40_200]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 144 / train/loss/con 0.02 / train/loss/dyn 9.72 / train/loss/image 39.13 / train/loss/policy 2.5e-3 / train/loss/rep 9.72 / train/loss/repval 2.82 / train/loss/rew 0.08 / train/loss/value 2.14 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.27
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 40_390]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 172 / train/loss/con 0.02 / train/loss/dyn 9.8 / train/loss/image 39.73 / train/loss/policy 4e-3 / train/loss/rep 9.8 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.87
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 40_580]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 168 / train/loss/con 0.02 / train/loss/dyn 9.8 / train/loss/image 39.28 / train/loss/policy 3.3e-3 / train/loss/rep 9.8 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.88
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 40_770]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 185 / train/loss/con 0.02 / train/loss/dyn 9.79 / train/loss/image 38.43 / train/loss/policy 3.8e-3 / train/loss/rep 9.79 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.57
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 40_960]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 115 / train/loss/con 0.02 / train/loss/dyn 9.76 / train/loss/image 39.28 / train/loss/policy 2.4e-3 / train/loss/rep 9.76 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.45
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 41_150]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 203 / train/loss/con 0.02 / train/loss/dyn 10.01 / train/loss/image 39.01 / train/loss/policy 2.7e-3 / train/loss/rep 10.01 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.77
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 41_340]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 196 / train/loss/con 0.02 / train/loss/dyn 9.86 / train/loss/image 38.53 / train/loss/policy 2.4e-3 / train/loss/rep 9.86 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.61
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 41_530]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 229 / train/loss/con 0.02 / train/loss/dyn 9.97 / train/loss/image 39.06 / train/loss/policy 3.1e-3 / train/loss/rep 9.97 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.97
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 41_720]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 135 / train/loss/con 0.02 / train/loss/dyn 9.89 / train/loss/image 38.39 / train/loss/policy 2.5e-3 / train/loss/rep 9.89 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1564.2
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 41_910]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 9.95 / train/loss/image 39.41 / train/loss/policy 3.5e-3 / train/loss/rep 9.95 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1613.03
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 42_100]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 143 / train/loss/con 0.02 / train/loss/dyn 10.11 / train/loss/image 39.9 / train/loss/policy 3e-3 / train/loss/rep 10.11 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1563.1
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 42_290]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 148 / train/loss/con 0.02 / train/loss/dyn 10.01 / train/loss/image 39.62 / train/loss/policy 3.4e-3 / train/loss/rep 10.01 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1589.76
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 42_480]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 10.05 / train/loss/image 39.11 / train/loss/policy 3.1e-3 / train/loss/rep 10.05 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.97
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 42_670]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 163 / train/loss/con 0.02 / train/loss/dyn 10.05 / train/loss/image 39.57 / train/loss/policy 1.8e-3 / train/loss/rep 10.05 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1591.89
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 42_860]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 196 / train/loss/con 0.02 / train/loss/dyn 10.12 / train/loss/image 39.18 / train/loss/policy 2.9e-3 / train/loss/rep 10.12 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.65
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T125155F946152
+Saved checkpoint.
+
+--------------------[Agent Step 43_050]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 10.04 / train/loss/image 38.68 / train/loss/policy 2.6e-3 / train/loss/rep 10.04 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 2.98 / fps/train 1526.55
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 43_240]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 182 / train/loss/con 0.02 / train/loss/dyn 9.96 / train/loss/image 39.21 / train/loss/policy 2.3e-3 / train/loss/rep 9.96 / train/loss/repval 2.78 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.6
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 43_430]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 34 / train/loss/con 0.02 / train/loss/dyn 10.13 / train/loss/image 39.41 / train/loss/policy 3.7e-3 / train/loss/rep 10.13 / train/loss/repval 2.76 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1564.53
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 43_620]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 161 / train/loss/con 0.02 / train/loss/dyn 10.16 / train/loss/image 39.57 / train/loss/policy 3.9e-3 / train/loss/rep 10.16 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1584.63
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 43_810]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 83 / train/loss/con 0.02 / train/loss/dyn 10.08 / train/loss/image 39.33 / train/loss/policy 4.1e-3 / train/loss/rep 10.08 / train/loss/repval 2.72 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.11
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 44_000]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 183 / train/loss/con 0.02 / train/loss/dyn 10.1 / train/loss/image 39.26 / train/loss/policy 3e-3 / train/loss/rep 10.1 / train/loss/repval 2.72 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.87
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 44_190]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 160 / train/loss/con 0.02 / train/loss/dyn 10.2 / train/loss/image 39.5 / train/loss/policy 4.3e-3 / train/loss/rep 10.2 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1559.04
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 44_380]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 92 / train/loss/con 0.02 / train/loss/dyn 10.08 / train/loss/image 39.24 / train/loss/policy 4.2e-3 / train/loss/rep 10.08 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1592.45
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 44_570]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 37 / train/loss/con 0.02 / train/loss/dyn 10.26 / train/loss/image 39.12 / train/loss/policy 3.7e-3 / train/loss/rep 10.26 / train/loss/repval 2.75 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1561.74
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 44_760]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 103 / train/loss/con 0.02 / train/loss/dyn 10.17 / train/loss/image 37.96 / train/loss/policy 3.2e-3 / train/loss/rep 10.17 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.11 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.1
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 44_950]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 70 / train/loss/con 0.02 / train/loss/dyn 10.34 / train/loss/image 39.26 / train/loss/policy 3e-3 / train/loss/rep 10.34 / train/loss/repval 2.8 / train/loss/rew 0.08 / train/loss/value 2.13 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1558.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 45_140]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 158 / train/loss/con 0.02 / train/loss/dyn 10.42 / train/loss/image 40.3 / train/loss/policy 3.9e-3 / train/loss/rep 10.42 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1582.4
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 45_330]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 146 / train/loss/con 0.02 / train/loss/dyn 10.31 / train/loss/image 39.47 / train/loss/policy 3.2e-3 / train/loss/rep 10.31 / train/loss/repval 2.76 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1560
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 45_520]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 185 / train/loss/con 0.02 / train/loss/dyn 10.45 / train/loss/image 40.42 / train/loss/policy 3.7e-3 / train/loss/rep 10.45 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1584.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 45_710]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 174 / train/loss/con 0.02 / train/loss/dyn 10.38 / train/loss/image 38.89 / train/loss/policy 4.6e-3 / train/loss/rep 10.38 / train/loss/repval 2.76 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 45_900]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 155 / train/loss/con 0.02 / train/loss/dyn 10.44 / train/loss/image 39.68 / train/loss/policy 4.2e-3 / train/loss/rep 10.44 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.53
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 46_090]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 194 / train/loss/con 0.02 / train/loss/dyn 10.26 / train/loss/image 39.24 / train/loss/policy 3.2e-3 / train/loss/rep 10.26 / train/loss/repval 2.74 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 46_280]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 158 / train/loss/con 0.02 / train/loss/dyn 10.35 / train/loss/image 38.91 / train/loss/policy 4.2e-3 / train/loss/rep 10.35 / train/loss/repval 2.75 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.19
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 46_470]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 281 / train/loss/con 0.02 / train/loss/dyn 10.56 / train/loss/image 39.73 / train/loss/policy 3.9e-3 / train/loss/rep 10.56 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.79
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 46_660]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 186 / train/loss/con 0.02 / train/loss/dyn 10.42 / train/loss/image 38.58 / train/loss/policy 2.9e-3 / train/loss/rep 10.42 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1584.02
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 46_850]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 185 / train/loss/con 0.02 / train/loss/dyn 10.44 / train/loss/image 39.93 / train/loss/policy 3.3e-3 / train/loss/rep 10.44 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588.29
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 47_040]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 153 / train/loss/con 0.02 / train/loss/dyn 10.6 / train/loss/image 40.39 / train/loss/policy 4.2e-3 / train/loss/rep 10.6 / train/loss/repval 2.75 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1567.6
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 47_230]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 195 / train/loss/con 0.02 / train/loss/dyn 10.43 / train/loss/image 38.87 / train/loss/policy 3.5e-3 / train/loss/rep 10.43 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1561.23
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 47_420]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 78 / train/loss/con 0.02 / train/loss/dyn 10.43 / train/loss/image 38.49 / train/loss/policy 4.3e-3 / train/loss/rep 10.43 / train/loss/repval 2.73 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1580.89
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 47_610]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 196 / train/loss/con 0.02 / train/loss/dyn 10.44 / train/loss/image 38.74 / train/loss/policy 3.9e-3 / train/loss/rep 10.44 / train/loss/repval 2.76 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1569.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 47_800]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 197 / train/loss/con 0.02 / train/loss/dyn 10.63 / train/loss/image 38.87 / train/loss/policy 3.8e-3 / train/loss/rep 10.63 / train/loss/repval 2.76 / train/loss/rew 0.07 / train/loss/value 2.12 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 47_990]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 226 / train/loss/con 0.02 / train/loss/dyn 10.49 / train/loss/image 38.83 / train/loss/policy 3e-3 / train/loss/rep 10.49 / train/loss/repval 2.71 / train/loss/rew 0.07 / train/loss/value 2.08 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1570.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 48_180]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 10.61 / train/loss/image 39.43 / train/loss/policy 3.3e-3 / train/loss/rep 10.61 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1565.17
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 48_370]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 181 / train/loss/con 0.02 / train/loss/dyn 10.59 / train/loss/image 38.63 / train/loss/policy 2.8e-3 / train/loss/rep 10.59 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1557.26
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 48_560]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 10.63 / train/loss/image 39.12 / train/loss/policy 2.7e-3 / train/loss/rep 10.63 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1612.11
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T132156F691517
+Saved checkpoint.
+
+--------------------[Agent Step 48_740]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 153 / train/loss/con 0.02 / train/loss/dyn 10.64 / train/loss/image 38.93 / train/loss/policy 2.2e-3 / train/loss/rep 10.64 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 2.94 / fps/train 1505.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 48_930]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 68 / train/loss/con 0.02 / train/loss/dyn 10.76 / train/loss/image 39.66 / train/loss/policy 2.1e-3 / train/loss/rep 10.76 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1582.96
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 49_120]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 255 / train/loss/con 0.02 / train/loss/dyn 10.51 / train/loss/image 38.74 / train/loss/policy 2.3e-3 / train/loss/rep 10.51 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.55
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 49_310]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 10.84 / train/loss/image 40.21 / train/loss/policy 2.9e-3 / train/loss/rep 10.84 / train/loss/repval 2.79 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1612.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 49_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 267 / train/loss/con 0.02 / train/loss/dyn 10.86 / train/loss/image 40.26 / train/loss/policy 2.8e-3 / train/loss/rep 10.86 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 49_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 164 / train/loss/con 0.02 / train/loss/dyn 10.86 / train/loss/image 39.81 / train/loss/policy 2.1e-3 / train/loss/rep 10.86 / train/loss/repval 2.77 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1558.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 49_880]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 176 / train/loss/con 0.02 / train/loss/dyn 10.72 / train/loss/image 39.27 / train/loss/policy 1e-3 / train/loss/rep 10.72 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.04
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 50_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 159 / train/loss/con 0.02 / train/loss/dyn 10.75 / train/loss/image 38.61 / train/loss/policy 1.7e-3 / train/loss/rep 10.75 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1588
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 50_260]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 222 / train/loss/con 0.02 / train/loss/dyn 10.61 / train/loss/image 38.08 / train/loss/policy 2.6e-3 / train/loss/rep 10.61 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1584.81
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 50_450]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 10.68 / train/loss/image 38.24 / train/loss/policy 3.3e-3 / train/loss/rep 10.68 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1612.14
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 50_640]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 321 / train/loss/con 0.02 / train/loss/dyn 10.76 / train/loss/image 38.82 / train/loss/policy 3.3e-3 / train/loss/rep 10.76 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1584.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 50_830]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 165 / train/loss/con 0.02 / train/loss/dyn 10.71 / train/loss/image 38.49 / train/loss/policy 1.8e-3 / train/loss/rep 10.71 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.17 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 51_020]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 197 / train/loss/con 0.02 / train/loss/dyn 10.78 / train/loss/image 38.15 / train/loss/policy 3.1e-3 / train/loss/rep 10.78 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1584.26
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 51_210]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 137 / train/loss/con 0.02 / train/loss/dyn 10.83 / train/loss/image 39.01 / train/loss/policy 2.2e-3 / train/loss/rep 10.83 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1559.86
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 51_400]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 199 / train/loss/con 0.02 / train/loss/dyn 10.72 / train/loss/image 38.38 / train/loss/policy 3.5e-3 / train/loss/rep 10.72 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.59
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 51_590]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 155 / train/loss/con 0.02 / train/loss/dyn 10.91 / train/loss/image 38.42 / train/loss/policy 2e-3 / train/loss/rep 10.91 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.26
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 51_780]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 181 / train/loss/con 0.02 / train/loss/dyn 10.79 / train/loss/image 38.24 / train/loss/policy 2.7e-3 / train/loss/rep 10.79 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.83
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 51_970]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 179 / train/loss/con 0.02 / train/loss/dyn 10.92 / train/loss/image 38.97 / train/loss/policy 3.3e-3 / train/loss/rep 10.92 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.42
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 52_160]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 259 / train/loss/con 0.02 / train/loss/dyn 10.85 / train/loss/image 39.38 / train/loss/policy 1.5e-3 / train/loss/rep 10.85 / train/loss/repval 2.87 / train/loss/rew 0.06 / train/loss/value 2.22 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.16
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 52_350]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.01 / train/loss/image 39.15 / train/loss/policy 3e-3 / train/loss/rep 11.01 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1613.51
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 52_540]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 38 / train/loss/con 0.02 / train/loss/dyn 10.84 / train/loss/image 38.21 / train/loss/policy 2.9e-3 / train/loss/rep 10.84 / train/loss/repval 2.88 / train/loss/rew 0.07 / train/loss/value 2.23 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1558.34
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 52_730]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 195 / train/loss/con 0.02 / train/loss/dyn 10.73 / train/loss/image 37.39 / train/loss/policy 2.8e-3 / train/loss/rep 10.73 / train/loss/repval 2.87 / train/loss/rew 0.06 / train/loss/value 2.23 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.11 / fps/train 1590.75
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 52_920]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 223 / train/loss/con 0.02 / train/loss/dyn 10.91 / train/loss/image 38.31 / train/loss/policy 2.6e-3 / train/loss/rep 10.91 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.24 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.19
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 53_110]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 199 / train/loss/con 0.02 / train/loss/dyn 10.87 / train/loss/image 38.11 / train/loss/policy 2.8e-3 / train/loss/rep 10.87 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1578.65
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 53_300]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 172 / train/loss/con 0.02 / train/loss/dyn 11.03 / train/loss/image 38.89 / train/loss/policy 2e-3 / train/loss/rep 11.03 / train/loss/repval 2.91 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1578.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 53_490]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 128 / train/loss/con 0.02 / train/loss/dyn 10.92 / train/loss/image 39.2 / train/loss/policy 3.1e-3 / train/loss/rep 10.92 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1567.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 53_680]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 174 / train/loss/con 0.02 / train/loss/dyn 10.9 / train/loss/image 38.54 / train/loss/policy 2.3e-3 / train/loss/rep 10.9 / train/loss/repval 2.85 / train/loss/rew 0.07 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3 / fps/train 1537.8
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 53_870]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 148 / train/loss/con 0.02 / train/loss/dyn 10.95 / train/loss/image 38.91 / train/loss/policy 3e-3 / train/loss/rep 10.95 / train/loss/repval 2.88 / train/loss/rew 0.06 / train/loss/value 2.26 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1575.82
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 54_060]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 10.97 / train/loss/image 38.43 / train/loss/policy 2.4e-3 / train/loss/rep 10.97 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.12 / fps/train 1596.94
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T135158F164334
+Saved checkpoint.
+
+--------------------[Agent Step 54_240]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 10.94 / train/loss/image 38.42 / train/loss/policy 2.5e-3 / train/loss/rep 10.94 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 2.9 / fps/train 1484.48
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 54_430]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 157 / train/loss/con 0.02 / train/loss/dyn 11.07 / train/loss/image 39.32 / train/loss/policy 2.1e-3 / train/loss/rep 11.07 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.41
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 54_620]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 178 / train/loss/con 0.02 / train/loss/dyn 11.08 / train/loss/image 37.65 / train/loss/policy 2.5e-3 / train/loss/rep 11.08 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.24 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 54_810]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 11.01 / train/loss/image 37.99 / train/loss/policy 2.4e-3 / train/loss/rep 11.01 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.25 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1575.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 55_000]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 240 / train/loss/con 0.02 / train/loss/dyn 11.08 / train/loss/image 38.3 / train/loss/policy 3.6e-3 / train/loss/rep 11.08 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.23 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.46
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 55_190]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 186 / train/loss/con 0.02 / train/loss/dyn 11.1 / train/loss/image 37.98 / train/loss/policy 3e-3 / train/loss/rep 11.1 / train/loss/repval 2.89 / train/loss/rew 0.06 / train/loss/value 2.28 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1574.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 55_380]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 88 / train/loss/con 0.02 / train/loss/dyn 11.09 / train/loss/image 38.28 / train/loss/policy 2.8e-3 / train/loss/rep 11.09 / train/loss/repval 2.87 / train/loss/rew 0.06 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1551.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 55_570]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 150 / train/loss/con 0.02 / train/loss/dyn 10.98 / train/loss/image 38.07 / train/loss/policy 2.5e-3 / train/loss/rep 10.98 / train/loss/repval 2.9 / train/loss/rew 0.06 / train/loss/value 2.26 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1549.94
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 55_760]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.03 / train/loss/image 37.25 / train/loss/policy 2.3e-3 / train/loss/rep 11.03 / train/loss/repval 2.88 / train/loss/rew 0.07 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.12 / fps/train 1598.22
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 55_950]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 323 / train/loss/con 0.02 / train/loss/dyn 11.16 / train/loss/image 37.39 / train/loss/policy 2.6e-3 / train/loss/rep 11.16 / train/loss/repval 2.9 / train/loss/rew 0.07 / train/loss/value 2.27 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1577.11
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 56_140]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 148 / train/loss/con 0.02 / train/loss/dyn 11.21 / train/loss/image 38.39 / train/loss/policy 2.2e-3 / train/loss/rep 11.21 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.26 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.46
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 56_330]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 191 / train/loss/con 0.02 / train/loss/dyn 11.11 / train/loss/image 37 / train/loss/policy 2.3e-3 / train/loss/rep 11.11 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1576.45
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 56_520]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 141 / train/loss/con 0.02 / train/loss/dyn 11.22 / train/loss/image 38.1 / train/loss/policy 1.6e-3 / train/loss/rep 11.22 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1578.74
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 56_710]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 268 / train/loss/con 0.02 / train/loss/dyn 11.11 / train/loss/image 38.12 / train/loss/policy 1.2e-3 / train/loss/rep 11.11 / train/loss/repval 2.89 / train/loss/rew 0.06 / train/loss/value 2.23 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1578.55
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 56_900]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 158 / train/loss/con 0.02 / train/loss/dyn 11.24 / train/loss/image 38.79 / train/loss/policy 1.3e-3 / train/loss/rep 11.24 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1578.77
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 57_090]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 169 / train/loss/con 0.02 / train/loss/dyn 11.35 / train/loss/image 38.66 / train/loss/policy 2.8e-3 / train/loss/rep 11.35 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.84
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 57_280]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 36 / train/loss/con 0.02 / train/loss/dyn 11.38 / train/loss/image 38.55 / train/loss/policy 1.4e-3 / train/loss/rep 11.38 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1560.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 57_470]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 202 / train/loss/con 0.02 / train/loss/dyn 11.25 / train/loss/image 38.49 / train/loss/policy 1.6e-3 / train/loss/rep 11.25 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.21
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 57_660]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 186 / train/loss/con 0.02 / train/loss/dyn 11.45 / train/loss/image 39.05 / train/loss/policy 4.8e-4 / train/loss/rep 11.45 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.23 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.35
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 57_850]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 157 / train/loss/con 0.02 / train/loss/dyn 11.18 / train/loss/image 37.97 / train/loss/policy 1.5e-3 / train/loss/rep 11.18 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.18
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 58_040]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 219 / train/loss/con 0.02 / train/loss/dyn 11.21 / train/loss/image 37.65 / train/loss/policy 1.3e-3 / train/loss/rep 11.21 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.41
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 58_230]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 207 / train/loss/con 0.02 / train/loss/dyn 11.19 / train/loss/image 37.4 / train/loss/policy 2e-3 / train/loss/rep 11.19 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.47
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 58_420]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 193 / train/loss/con 0.02 / train/loss/dyn 11.32 / train/loss/image 38.36 / train/loss/policy 1.8e-3 / train/loss/rep 11.32 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1583.37
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 58_610]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 151 / train/loss/con 0.02 / train/loss/dyn 11.4 / train/loss/image 38.18 / train/loss/policy 2.3e-3 / train/loss/rep 11.4 / train/loss/repval 2.85 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 58_800]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 257 / train/loss/con 0.02 / train/loss/dyn 11.2 / train/loss/image 36.64 / train/loss/policy 2.6e-3 / train/loss/rep 11.2 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.81
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 58_990]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 191 / train/loss/con 0.02 / train/loss/dyn 11.34 / train/loss/image 37.77 / train/loss/policy 2.5e-3 / train/loss/rep 11.34 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1580.03
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 59_180]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 111 / train/loss/con 0.02 / train/loss/dyn 11.43 / train/loss/image 38.49 / train/loss/policy 2.2e-3 / train/loss/rep 11.43 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1584.66
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 59_370]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 11.18 / train/loss/image 37.25 / train/loss/policy 1.3e-3 / train/loss/rep 11.18 / train/loss/repval 2.85 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1583.71
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 59_560]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 187 / train/loss/con 0.02 / train/loss/dyn 11.37 / train/loss/image 37.51 / train/loss/policy 2e-3 / train/loss/rep 11.37 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.13
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T142201F243608
+Saved checkpoint.
+
+--------------------[Agent Step 59_750]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.28 / train/loss/image 37.18 / train/loss/policy 2.7e-3 / train/loss/rep 11.28 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.26
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 59_940]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 380 / train/loss/con 0.02 / train/loss/dyn 11.46 / train/loss/image 37.62 / train/loss/policy 3e-3 / train/loss/rep 11.46 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1581.74
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 60_130]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 108 / train/loss/con 0.02 / train/loss/dyn 11.35 / train/loss/image 37.43 / train/loss/policy 1.7e-3 / train/loss/rep 11.35 / train/loss/repval 2.87 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1553.89
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 60_320]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 167 / train/loss/con 0.02 / train/loss/dyn 11.33 / train/loss/image 37.4 / train/loss/policy 2.9e-3 / train/loss/rep 11.33 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1580.7
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 60_510]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 113 / train/loss/con 0.02 / train/loss/dyn 11.57 / train/loss/image 38.37 / train/loss/policy 1.6e-3 / train/loss/rep 11.57 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.56
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 60_700]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 156 / train/loss/con 0.02 / train/loss/dyn 11.56 / train/loss/image 38.77 / train/loss/policy 2.5e-3 / train/loss/rep 11.56 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1551.01
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 60_890]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.31 / train/loss/image 37.47 / train/loss/policy 2.7e-3 / train/loss/rep 11.31 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.14 / fps/train 1606.74
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 61_080]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 101 / train/loss/con 0.02 / train/loss/dyn 11.36 / train/loss/image 37.59 / train/loss/policy 3.4e-3 / train/loss/rep 11.36 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1546.31
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 61_270]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 48 / train/loss/con 0.02 / train/loss/dyn 11.43 / train/loss/image 37.6 / train/loss/policy 3e-3 / train/loss/rep 11.43 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1544.41
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 61_460]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 155 / train/loss/con 0.02 / train/loss/dyn 11.61 / train/loss/image 38.37 / train/loss/policy 2.1e-3 / train/loss/rep 11.61 / train/loss/repval 2.9 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.1
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 61_650]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 178 / train/loss/con 0.02 / train/loss/dyn 11.51 / train/loss/image 36.94 / train/loss/policy 2.3e-3 / train/loss/rep 11.51 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1570.95
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 61_840]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 38 / train/loss/con 0.02 / train/loss/dyn 11.54 / train/loss/image 37.43 / train/loss/policy 3.1e-3 / train/loss/rep 11.54 / train/loss/repval 2.8 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1545.86
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 62_030]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 302 / train/loss/con 0.02 / train/loss/dyn 11.4 / train/loss/image 37.6 / train/loss/policy 3.2e-3 / train/loss/rep 11.4 / train/loss/repval 2.88 / train/loss/rew 0.06 / train/loss/value 2.22 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1576.5
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 62_220]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 202 / train/loss/con 0.02 / train/loss/dyn 11.51 / train/loss/image 37.14 / train/loss/policy 2.5e-3 / train/loss/rep 11.51 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.44
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 62_410]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.41 / train/loss/image 36.73 / train/loss/policy 2.6e-3 / train/loss/rep 11.41 / train/loss/repval 2.88 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.12 / fps/train 1597.32
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 62_600]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 263 / train/loss/con 0.02 / train/loss/dyn 11.46 / train/loss/image 36.96 / train/loss/policy 3e-3 / train/loss/rep 11.46 / train/loss/repval 2.85 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1570.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 62_790]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 11.73 / train/loss/image 38.19 / train/loss/policy 2.9e-3 / train/loss/rep 11.73 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1570.05
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 62_980]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 171 / train/loss/con 0.02 / train/loss/dyn 11.74 / train/loss/image 37.86 / train/loss/policy 2.8e-3 / train/loss/rep 11.74 / train/loss/repval 2.85 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1547.76
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 63_170]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 160 / train/loss/con 0.02 / train/loss/dyn 11.49 / train/loss/image 37.59 / train/loss/policy 3.1e-3 / train/loss/rep 11.49 / train/loss/repval 2.88 / train/loss/rew 0.06 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.65
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 63_360]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 180 / train/loss/con 0.02 / train/loss/dyn 11.55 / train/loss/image 37.37 / train/loss/policy 2.2e-3 / train/loss/rep 11.55 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.55
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 63_550]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 202 / train/loss/con 0.02 / train/loss/dyn 11.58 / train/loss/image 37.15 / train/loss/policy 2.2e-3 / train/loss/rep 11.58 / train/loss/repval 2.85 / train/loss/rew 0.06 / train/loss/value 2.24 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.98
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 63_740]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score -0.9 / episode/length 45 / train/loss/con 0.02 / train/loss/dyn 11.81 / train/loss/image 37.29 / train/loss/policy 2.2e-3 / train/loss/rep 11.81 / train/loss/repval 2.85 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1550.81
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 63_930]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 163 / train/loss/con 0.02 / train/loss/dyn 11.59 / train/loss/image 36.82 / train/loss/policy 2.4e-3 / train/loss/rep 11.59 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.71
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 64_120]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 197 / train/loss/con 0.02 / train/loss/dyn 11.72 / train/loss/image 37.38 / train/loss/policy 2.8e-3 / train/loss/rep 11.72 / train/loss/repval 2.79 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.92
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 64_310]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.69 / train/loss/image 37.14 / train/loss/policy 2.5e-3 / train/loss/rep 11.69 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.12 / fps/train 1597.99
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 64_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 270 / train/loss/con 0.02 / train/loss/dyn 11.66 / train/loss/image 37.36 / train/loss/policy 1.9e-3 / train/loss/rep 11.66 / train/loss/repval 2.81 / train/loss/rew 0.06 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.66
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 64_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 214 / train/loss/con 0.02 / train/loss/dyn 11.69 / train/loss/image 37.85 / train/loss/policy 2.3e-3 / train/loss/rep 11.69 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.13 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1570.66
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 64_880]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 120 / train/loss/con 0.02 / train/loss/dyn 11.81 / train/loss/image 37.97 / train/loss/policy 2.9e-3 / train/loss/rep 11.81 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.16 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1568.95
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 65_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 50 / train/loss/con 0.02 / train/loss/dyn 11.67 / train/loss/image 37.04 / train/loss/policy 3e-3 / train/loss/rep 11.67 / train/loss/repval 2.88 / train/loss/rew 0.07 / train/loss/value 2.22 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.02 / fps/train 1545.25
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T145203F814559
+Saved checkpoint.
+
+--------------------[Agent Step 65_250]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 127 / train/loss/con 0.02 / train/loss/dyn 11.88 / train/loss/image 37.68 / train/loss/policy 2.9e-3 / train/loss/rep 11.88 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.21 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 2.99 / fps/train 1529.64
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 65_440]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 223 / train/loss/con 0.02 / train/loss/dyn 11.88 / train/loss/image 38.29 / train/loss/policy 2.8e-3 / train/loss/rep 11.88 / train/loss/repval 2.81 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.06 / fps/train 1567.81
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 65_630]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 200 / train/loss/con 0.02 / train/loss/dyn 11.88 / train/loss/image 37.47 / train/loss/policy 1.5e-3 / train/loss/rep 11.88 / train/loss/repval 2.87 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.22
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 65_820]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 318 / train/loss/con 0.02 / train/loss/dyn 11.85 / train/loss/image 37.43 / train/loss/policy 3.1e-3 / train/loss/rep 11.85 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.14 / fps/train 1607.46
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 66_010]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 52 / train/loss/con 0.02 / train/loss/dyn 11.88 / train/loss/image 37.48 / train/loss/policy 1.8e-3 / train/loss/rep 11.88 / train/loss/repval 2.84 / train/loss/rew 0.07 / train/loss/value 2.16 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.03 / fps/train 1551.38
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 66_200]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 164 / train/loss/con 0.02 / train/loss/dyn 11.92 / train/loss/image 38.11 / train/loss/policy 1.9e-3 / train/loss/rep 11.92 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.14 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1577.75
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 66_390]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 176 / train/loss/con 0.02 / train/loss/dyn 11.8 / train/loss/image 37.45 / train/loss/policy 2.4e-3 / train/loss/rep 11.8 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1579.63
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 66_580]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 142 / train/loss/con 0.02 / train/loss/dyn 11.85 / train/loss/image 37.74 / train/loss/policy 1.7e-3 / train/loss/rep 11.85 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.15 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1559.97
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 66_770]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 204 / train/loss/con 0.02 / train/loss/dyn 11.63 / train/loss/image 36.81 / train/loss/policy 2.6e-3 / train/loss/rep 11.63 / train/loss/repval 2.83 / train/loss/rew 0.07 / train/loss/value 2.14 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1589.64
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 66_960]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.93 / train/loss/image 37.88 / train/loss/policy 2e-3 / train/loss/rep 11.93 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.15 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1611
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 67_150]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 143 / train/loss/con 0.02 / train/loss/dyn 11.67 / train/loss/image 36.57 / train/loss/policy 3.3e-3 / train/loss/rep 11.67 / train/loss/repval 2.81 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.04 / fps/train 1557.71
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 67_340]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 174 / train/loss/con 0.02 / train/loss/dyn 11.88 / train/loss/image 37.36 / train/loss/policy 2.4e-3 / train/loss/rep 11.88 / train/loss/repval 2.86 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.16 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1582.12
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 67_530]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 165 / train/loss/con 0.02 / train/loss/dyn 11.78 / train/loss/image 37.37 / train/loss/policy 1.8e-3 / train/loss/rep 11.78 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.15 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1582.28
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 67_720]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 157 / train/loss/con 0.02 / train/loss/dyn 11.93 / train/loss/image 37.62 / train/loss/policy 1.7e-3 / train/loss/rep 11.93 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.19 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1584.75
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 67_910]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 189 / train/loss/con 0.02 / train/loss/dyn 11.92 / train/loss/image 37.1 / train/loss/policy 2.3e-3 / train/loss/rep 11.92 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.97
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 68_100]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 191 / train/loss/con 0.02 / train/loss/dyn 11.75 / train/loss/image 36.82 / train/loss/policy 2e-3 / train/loss/rep 11.75 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.33
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 68_290]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 5.1 / episode/length 188 / train/loss/con 0.02 / train/loss/dyn 12.02 / train/loss/image 37.4 / train/loss/policy 2.2e-3 / train/loss/rep 12.02 / train/loss/repval 2.81 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1575.2
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 68_480]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 223 / train/loss/con 0.02 / train/loss/dyn 11.92 / train/loss/image 37.59 / train/loss/policy 1.8e-3 / train/loss/rep 11.92 / train/loss/repval 2.86 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1583.54
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 68_670]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 191 / train/loss/con 0.02 / train/loss/dyn 11.83 / train/loss/image 37.15 / train/loss/policy 3.4e-3 / train/loss/rep 11.83 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1585.7
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 68_860]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 41 / train/loss/con 0.02 / train/loss/dyn 11.94 / train/loss/image 37.12 / train/loss/policy 9.5e-4 / train/loss/rep 11.94 / train/loss/repval 2.85 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.05 / fps/train 1560.36
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 69_050]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 217 / train/loss/con 0.02 / train/loss/dyn 11.78 / train/loss/image 36.49 / train/loss/policy 2.1e-3 / train/loss/rep 11.78 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1587.95
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 69_240]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 146 / train/loss/con 0.02 / train/loss/dyn 11.97 / train/loss/image 37.09 / train/loss/policy 1.7e-3 / train/loss/rep 11.97 / train/loss/repval 2.89 / train/loss/rew 0.07 / train/loss/value 2.21 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.1 / fps/train 1586.45
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 69_430]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+train/loss/con 0.02 / train/loss/dyn 11.82 / train/loss/image 35.98 / train/loss/policy 1.7e-3 / train/loss/rep 11.82 / train/loss/repval 2.84 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.15 / fps/train 1610.34
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 69_620]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 309 / train/loss/con 0.02 / train/loss/dyn 12.14 / train/loss/image 37.76 / train/loss/policy 3.3e-3 / train/loss/rep 12.14 / train/loss/repval 2.82 / train/loss/rew 0.07 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.09 / fps/train 1580.94
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 69_800]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 62 / train/loss/con 0.02 / train/loss/dyn 12.04 / train/loss/image 36.61 / train/loss/policy 1.9e-3 / train/loss/rep 12.04 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 2.97 / fps/train 1519.02
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 69_990]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 152 / train/loss/con 0.02 / train/loss/dyn 12.05 / train/loss/image 36.95 / train/loss/policy 3.9e-3 / train/loss/rep 12.05 / train/loss/repval 2.85 / train/loss/rew 0.07 / train/loss/value 2.2 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.05
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 70_180]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 196 / train/loss/con 0.02 / train/loss/dyn 12.1 / train/loss/image 36.68 / train/loss/policy 2.7e-3 / train/loss/rep 12.1 / train/loss/repval 2.82 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.2 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.72
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 70_370]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 4.1 / episode/length 154 / train/loss/con 0.02 / train/loss/dyn 11.95 / train/loss/image 36.43 / train/loss/policy 2.5e-3 / train/loss/rep 11.95 / train/loss/repval 2.78 / train/loss/rew 0.06 / train/loss/value 2.14 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 70_560]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 180 / train/loss/con 0.02 / train/loss/dyn 11.92 / train/loss/image 36.86 / train/loss/policy 3.6e-3 / train/loss/rep 11.92 / train/loss/repval 2.79 / train/loss/rew 0.06 / train/loss/value 2.16 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.25
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 70_750]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 246 / train/loss/con 0.02 / train/loss/dyn 12.03 / train/loss/image 36.9 / train/loss/policy 2.6e-3 / train/loss/rep 12.03 / train/loss/repval 2.78 / train/loss/rew 0.06 / train/loss/value 2.15 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.08 / fps/train 1575.61
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Saving checkpoint: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/ckpt/20260503T152206F507679
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Saved checkpoint.
+
+--------------------[Agent Step 70_930]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 227 / train/loss/con 0.02 / train/loss/dyn 12.06 / train/loss/image 36.96 / train/loss/policy 3.7e-3 / train/loss/rep 12.06 / train/loss/repval 2.83 / train/loss/rew 0.06 / train/loss/value 2.19 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3 / fps/train 1533.9
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 71_120]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 1.1 / episode/length 44 / train/loss/con 0.02 / train/loss/dyn 12.05 / train/loss/image 37 / train/loss/policy 3.4e-3 / train/loss/rep 12.05 / train/loss/repval 2.8 / train/loss/rew 0.06 / train/loss/value 2.16 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1572.66
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 71_310]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 236 / train/loss/con 0.02 / train/loss/dyn 11.91 / train/loss/image 36.66 / train/loss/policy 3.5e-3 / train/loss/rep 11.91 / train/loss/repval 2.78 / train/loss/rew 0.06 / train/loss/value 2.16 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 71_500]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 2.1 / episode/length 219 / train/loss/con 0.02 / train/loss/dyn 12 / train/loss/image 36.35 / train/loss/policy 2.8e-3 / train/loss/rep 12 / train/loss/repval 2.79 / train/loss/rew 0.06 / train/loss/value 2.15 / train/rand/action 0.19 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.53
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 71_690]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 182 / train/loss/con 0.02 / train/loss/dyn 12.04 / train/loss/image 36.84 / train/loss/policy 2.9e-3 / train/loss/rep 12.04 / train/loss/repval 2.78 / train/loss/rew 0.06 / train/loss/value 2.17 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1573.43
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+
+--------------------[Agent Step 71_880]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 0.1 / episode/length 138 / train/loss/con 0.02 / train/loss/dyn 11.92 / train/loss/image 35.71 / train/loss/policy 3e-3 / train/loss/rep 11.92 / train/loss/repval 2.81 / train/loss/rew 0.06 / train/loss/value 2.18 / train/rand/action 0.18 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1574.22
+
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/metrics.jsonl
+Writing metrics: /home/2026/cyu2/logdir/dreamer/crafter_size12m_trm/scores.jsonl
+
+--------------------[Agent Step 72_070]--------------------
+Metrics filtered by: 'score|length|fps|ratio|train/loss/|train/rand/'
+episode/score 3.1 / episode/length 179 / train/loss/con 0.02 / train/loss/dyn 12.06 / train/loss/image 37.21 / train/loss/policy 3.3e-3 / train/loss/rep 12.06 / train/loss/repval 2.74 / train/loss/rew 0.06 / train/loss/value 2.13 / train/rand/action 0.17 / replay/replay_ratio 520 / fps/policy 3.07 / fps/train 1571.47
+
