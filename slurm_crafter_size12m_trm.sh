@@ -121,4 +121,5 @@ PY
   --run.save_every 1800 \
   --agent.dyn.rssm.core trm \
   --agent.dyn.rssm.attn_heads 4 \
-  --agent.dyn.rssm.trm_steps 8
+  --agent.dyn.rssm.trm_steps 4 \
+  --jax.compute_dtype float32
