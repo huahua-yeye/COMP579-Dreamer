@@ -8,3 +8,4 @@ MUJOCO_LOG.TXT
 .venv
 logdir/
 *.DS_Store
+logdir_server/
