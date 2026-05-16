@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=dreamerv3
-#SBATCH --output=logs/dreamerv3_%j.out
-#SBATCH --error=logs/dreamerv3_%j.err
+#SBATCH --output=logs/%j.out
+#SBATCH --error=logs/%j.err
 #SBATCH --time=12:00:00
 #SBATCH --gres=gpu:4
 #SBATCH --mem=256G

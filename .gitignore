@@ -9,3 +9,4 @@ MUJOCO_LOG.TXT
 logdir/
 *.DS_Store
 logdir_server/
+logs/

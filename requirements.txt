@@ -8,8 +8,18 @@ elements>=3.19.1
 google-resumable-media>=2.7.2
 granular>=0.20.3
 ipdb
-jax[cuda12]==0.4.33
+# jax[cuda12]==0.5.0
+# pip install jax jaxlib==0.5.1 jaxtyping
+# jax>=0.5.1
+# jaxlib>=0.5.1 
+# jaxtyping
+
+jax==0.6.0
+jaxlib==0.6.0
+jax-cuda12-plugin==0.6.0
+jax-cuda12-pjrt==0.6.0
 jaxtyping
+
 ninjax>=3.5.1
 numpy<2  # DMLab: <2, MineRLv1.0: <1.24
 optax
@@ -17,3 +27,7 @@ portal>=3.5.0
 scope>=0.4.4
 tqdm
 # nvidia-cuda-nvcc-cu12<=12.2
+crafter
+
+# pip install -U pip setuptools
+# pip install dm_control
