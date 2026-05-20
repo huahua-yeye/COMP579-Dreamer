@@ -60,6 +60,7 @@ def load_runs(args):
     found = list(indir.glob(args.pattern))
     assert found, (indir, args.pattern)
     for filename in found:
+      print(f'Filename: {filename}')
       if args.newstyle:
         _, task, method, seed = filename.parent.name.split('-')
       else:
@@ -209,7 +210,8 @@ def plot_runs(df, stats, args):
   cols = args.cols or (4 + (total > 24) + (total > 35) + (total > 48))
   fig, axes = plots(total, cols, args.size)
 
-  grouped = df.groupby(['task', 'method'])[['xs', 'ys', 'seed']].agg(np.stack)
+  # grouped = df.groupby(['task', 'method'])[['xs', 'ys', 'seed']].agg(np.stack)
+  grouped = df.groupby(['task', 'method'])[['xs', 'ys']].agg(np.stack)
   for task, ax in zip(tasks, axes[:len(tasks)]):
     style(ax, xticks=args.xticks, yticks=args.yticks)
     title = task.replace('_', ' ').replace(':', ' ').split(' ', 1)[1].title()
@@ -394,12 +396,12 @@ def main(args):
 
 if __name__ == '__main__':
   main(elements.Flags(
-      pattern='**/scores.jsonl',
+      pattern='logdir_plot/**/scores.jsonl',
       indirs=[''],
       outdir='',
       methods='.*',
       tasks='.*',
-      newstyle=True,
+      newstyle=False,
       indir_prefix=False,
       workers=16,
       xkeys=['xs', 'step'],
